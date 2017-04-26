@@ -18,19 +18,24 @@ logging.basicConfig(level=logging.INFO,
 app = Flask(__name__)
 
 
+@app.route('/network')
+def network():
+    return render_template('network.html')
+
+
 @app.route('/search')
 def search():
     return render_template('search.html')
 
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/password')
+def password():
+    return render_template('password.html')
 
 
-@app.route('/research')
-def research():
-    return render_template('research.html')
+@app.route('/crawl')
+def crawl():
+    return render_template('crawl.html')
 
 
 if __name__ == '__main__':
