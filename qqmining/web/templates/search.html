@@ -16,8 +16,8 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-   <!--  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'> -->
+    <!--  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'> -->
 
 </head>
 <body>
@@ -80,9 +80,11 @@
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 ">
                     <div class="register-card">
+                        <!--
                         <div class="tim-title">
                             <h3>智能搜索</h3>
                         </div>
+                        -->
 
                         <form class="register-form">
                             <label>QQ号</label>
@@ -105,64 +107,41 @@
                                    class="btn btn-simple btn-info">更多过滤条件</a>
                             </div>
 
-                            <div class="tim-title">
+                            <div id="navbar-dropdown">
+                                <nav class="navbar navbar-default">
+                                    <div class="container-fluid">
+                                        <div class="collapse navbar-collapse" id="gender-collapse">
+                                            <ul class="nav navbar-nav">
+                                                <li class="dropdown">
+                                                    <button href="#" class="dropdown-toggle btn btn-primary btn-lg"
+                                                            data-toggle="dropdown">
+                                                        性别
+                                                        <b class="caret"></b></button>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <li class="dropdown-header">请选择性别</li>
+                                                        <li><a>不限</a></li>
+                                                        <li><a>男</a></li>
+                                                        <li><a>女</a></li>
+                                                    </ul>
+                                                </li>
 
-                                <div id="navbar-dropdown">
-                                    <nav class="navbar navbar-default">
-                                        <div class="container-fluid">
-                                            <!-- Brand and toggle get grouped for better mobile display -->
-                                            <div class="navbar-header">
-                                                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                                                        data-target="#bs-example-navbar-collapse-1">
-                                                    <span class="sr-only">Toggle navigation</span>
-                                                    <span class="icon-bar"></span>
-                                                    <span class="icon-bar"></span>
-                                                    <span class="icon-bar"></span>
-                                                </button>
-                                                <span><b>属性过滤条件</b></span>
-                                            </div>
-
-                                            <!-- Collect the nav links, forms, and other content for toggling -->
-                                            <div class="collapse navbar-collapse" id="gender-collapse">
-                                                <ul class="nav navbar-nav pull-right">
-                                                    <!--                                       default dropdown -->
-                                                    <li class="dropdown">
-                                                        <button href="#" class="dropdown-toggle btn"
-                                                                data-toggle="dropdown">
-                                                            性别
-                                                            <b class="caret"></b></button>
-                                                        <!-- You can add classes for different colours on the next element -->
-                                                        <ul class="dropdown-menu dropdown-menu-right">
-                                                            <li class="dropdown-header">请选择性别</li>
-                                                            <li><a>不限</a></li>
-                                                            <li><a>男</a></li>
-                                                            <li><a>女</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <!--                                       primary dropdown -->
-                                                    <li class="dropdown">
-                                                        <button href="#" class="dropdown-toggle btn btn-primary"
-                                                                data-toggle="dropdown">年龄 <b class="caret"></b></button>
-                                                        <!--                                  You can add classes for different colours on the next element -->
-                                                        <ul class="dropdown-menu dropdown-primary dropdown-menu-right">
-                                                            <li class="dropdown-header">请选择年龄段</li>
-                                                            <li><a>不限</a></li>
-                                                            <li><a>18岁以下</a></li>
-                                                            <li><a>18-22岁</a></li>
-                                                            <li><a>23-26岁</a></li>
-                                                            <li><a>27-35岁</a></li>
-                                                            <li><a>35岁以上</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- /.navbar-collapse -->
+                                                <li class="dropdown">
+                                                    <button href="#" class="dropdown-toggle btn btn-primary btn-lg"
+                                                            data-toggle="dropdown">年龄 <b class="caret"></b></button>
+                                                    <ul class="dropdown-menu dropdown-primary dropdown-menu-right">
+                                                        <li class="dropdown-header">请选择年龄段</li>
+                                                        <li><a>不限</a></li>
+                                                        <li><a>18岁以下</a></li>
+                                                        <li><a>18-22岁</a></li>
+                                                        <li><a>23-26岁</a></li>
+                                                        <li><a>27-35岁</a></li>
+                                                        <li><a>35岁以上</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <!-- /.container-fluid -->
-                                    </nav>
-
-                                </div>
-                                <!--  end navbar -->
+                                    </div>
+                                </nav>
                             </div>
                             <button class="btn btn-danger btn-block">搜索</button>
                             <br/>
@@ -188,29 +167,29 @@
                             <!--                         We added two wrappers with the classes "nav-tabs-navigation" and "nav-tabs-wrapper" so the name of the tabs can be aligned to the center of the container they're placed in -->
                             <table class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>编号</th>
-                                        <th>QQ号</th>
-                                        <th>手机号</th>
-                                        <th>邮箱</th>
-                                        <th>身份证号</th>
-                                    </tr>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>QQ号</th>
+                                    <th>手机号</th>
+                                    <th>邮箱</th>
+                                    <th>身份证号</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>12356</td>
-                                        <td>18700000000</td>
-                                        <td>11334@qq.com</td>
-                                        <td>123456199789452847</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>12356</td>
-                                        <td>18700000000</td>
-                                        <td>11334@qq.com</td>
-                                        <td>123456199789452847</td>
-                                    </tr>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>12356</td>
+                                    <td>18700000000</td>
+                                    <td>11334@qq.com</td>
+                                    <td>123456199789452847</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>12356</td>
+                                    <td>18700000000</td>
+                                    <td>11334@qq.com</td>
+                                    <td>123456199789452847</td>
+                                </tr>
                                 </tbody>
                             </table>
                             <br/>
@@ -233,87 +212,87 @@
                                 </div>
                             </div>
                             <div id="my-tab-content" class="tab-content">
-                                <div class="tab-pane active" id="home">                                    
+                                <div class="tab-pane active" id="home">
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>                                        
-                                                <th>QQ</th>
-                                                <th>性别</th>
-                                                <th>年龄</th>
-                                                <th>昵称</th>
-                                                <th>群号</th>
-                                                <th>群名称</th>
-                                                <th>群创建时间</th>
-                                                <th>群简介</th>
-                                            </tr>
+                                        <tr>
+                                            <th>QQ</th>
+                                            <th>性别</th>
+                                            <th>年龄</th>
+                                            <th>昵称</th>
+                                            <th>群号</th>
+                                            <th>群名称</th>
+                                            <th>群创建时间</th>
+                                            <th>群简介</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>10001713</td>
-                                                <td>未知</td>
-                                                <td>101</td>
-                                                <td>傻不拉几</td>                                        
-                                                <td>10001713</td>
-                                                <td>【石】市都市时尚</td>
-                                                <td>2005-06-17</td>
-                                                <td><p>本空间为所有美发爱好者.发型工作者互相学习交流.分享心情!!!!</p></td>
-                                            </tr>
-                                            <tr>                                                
-                                                <td>10001713</td>
-                                                <td>未知</td>
-                                                <td>101</td>
-                                                <td>张三</td>                                        
-                                                <td>10001738</td>
-                                                <td>№动感‰の族№</td>
-                                                <td>2005-06-09</td>
-                                                <td><p>の↘緣是天定∧份是人爲↙※``又怎能oo轻易說ツ放棄┈-→`總會有一兲☆┈`</p></td>
-                                            </tr>
+                                        <tr>
+                                            <td>10001713</td>
+                                            <td>未知</td>
+                                            <td>101</td>
+                                            <td>傻不拉几</td>
+                                            <td>10001713</td>
+                                            <td>【石】市都市时尚</td>
+                                            <td>2005-06-17</td>
+                                            <td><p>本空间为所有美发爱好者.发型工作者互相学习交流.分享心情!!!!</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10001713</td>
+                                            <td>未知</td>
+                                            <td>101</td>
+                                            <td>张三</td>
+                                            <td>10001738</td>
+                                            <td>№动感‰の族№</td>
+                                            <td>2005-06-09</td>
+                                            <td><p>の↘緣是天定∧份是人爲↙※``又怎能oo轻易說ツ放棄┈-→`總會有一兲☆┈`</p></td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="profile">
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>                                                
-                                                <th>QQ号</th>
-                                                <th>姓名</th>
-                                                <th>性别</th>
-                                                <th>年龄</th>                                                
-                                            </tr>
+                                        <tr>
+                                            <th>QQ号</th>
+                                            <th>姓名</th>
+                                            <th>性别</th>
+                                            <th>年龄</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>                                                
-                                                <td>12356</td>
-                                                <td>张三</td>
-                                                <td>未知</td>
-                                                <td>21</td>
-                                            </tr>                                            
+                                        <tr>
+                                            <td>12356</td>
+                                            <td>张三</td>
+                                            <td>未知</td>
+                                            <td>21</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="messages">
                                     <table class="table table-striped">
                                         <thead>
-                                            <tr>                                                
-                                                <th>QQ号</th>
-                                                <th>群号</th>
-                                                <th>学历</th>
-                                                <th>学校</th>                                                                        
-                                            </tr>
+                                        <tr>
+                                            <th>QQ号</th>
+                                            <th>群号</th>
+                                            <th>学历</th>
+                                            <th>学校</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>                                                
-                                                <td>12356</td>
-                                                <td>10001713</td>
-                                                <td>硕士</td>
-                                                <td>西安交通大学</td>
-                                            </tr>
-                                            <tr>                                                
-                                                <td>12356</td>
-                                                <td>10001543</td>
-                                                <td>本科</td>
-                                                <td>西安交通大学</td>
-                                            </tr>
+                                        <tr>
+                                            <td>12356</td>
+                                            <td>10001713</td>
+                                            <td>硕士</td>
+                                            <td>西安交通大学</td>
+                                        </tr>
+                                        <tr>
+                                            <td>12356</td>
+                                            <td>10001543</td>
+                                            <td>本科</td>
+                                            <td>西安交通大学</td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -337,8 +316,8 @@
                 <ul>
 
                     <li>
-                        <a href="#">
-                            Creative Tim
+                        <a href="http://nskeylab.xjtu.edu.cn/site/lab/">
+                            实验室
                         </a>
                     </li>
                     <li>
@@ -367,6 +346,8 @@
         $("#extra-group").toggle();
         $("#filter-link").text("隐藏过滤条件");
     }
+
+
 
 </script>
 <script src="static/js/jquery-1.10.2.js" type="text/javascript"></script>
