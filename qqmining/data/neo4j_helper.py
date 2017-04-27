@@ -127,7 +127,8 @@ class GraphDBHelper:
         link_query = 'USING PERIODIC COMMIT 5000 ' \
                      'LOAD CSV WITH HEADERS FROM "file:///edge_data.csv" AS line ' \
                      'MATCH (a:QQ {uin: line.from}),(b:Group { gid: line.to}) ' \
-                     'CREATE (a)-[:Qun { nick:line.nick,age:line.age, gender:line.gender,auth:line.auth }]->(b)'
+                     'CREATE (a)-[:Qun { src:line.from,dst:line.to,' \
+                     'nick:line.nick,age:toInt(line.age), gender:line.gender,auth:line.auth }]->(b)'
         session = self.driver.session()
         session.run(link_query)
         session.close()

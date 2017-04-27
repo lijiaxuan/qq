@@ -16,8 +16,8 @@
 
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>-->
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>-->
 
 </head>
 <body>
@@ -73,68 +73,36 @@
 
 <div class="wrapper">
 
-    <!-- content come here     -->
     <div class="container">
         <div class="row">
-            <div class="tim-title">
-                <h3>文章发表</h3>
-                <ul>
-                    <li><p><strong>Pinghui Wang</strong>, Wenbo He, and Xue Liu.
-                        “Efficiently Estimating Statistics of Points of Interests on Maps”.
-                        Accepted by <strong>IEEE Transactions on Knowledge and Data Engineering</strong>, 2015.
-                        (<strong>中国计算机学会A类期刊</strong>. An earlier version appeared in Proceedings of IEEE ICDE 2014.)
-                    </p></li>
-                    <li><p>Junzhou Zhao, John C.S. Lui, Don Towsley, Pinghui Wang, and Xiaohong Guan.
-                        “Tracking Triadic Cardinality Distributions for Burst Detection in Social Activity Streams”.
-                        Proceedings of ACM Conference on Online Social Networks (COSN’15) 2015.
-                    </p></li>
-                    <li><p>Junzhou Zhao, John C.S. Lui, Don Towsley, Pinghui Wang, and Xiaohong Guan. “A Tale of Three
-                        Graphs: Sampling Design on Hybrid Social-Affiliation Networks”. Proceedings of IEEE ICDE 2015.
-                        (中国计算机学会A类会议).
-                    </p></li>
-                    <li><p>
-                        Pinghui Wang, Junzhou Zhao, John C.S. Lui, Don Towsley, and Xiaohong Guan, “Unbiased
-                        Characterization of Node Pairs Over Large Graphs”, ACM Transactions on Knowledge Discovery from
-                        Data, 9(3), 2015. (中国计算机学会B类期刊. An earlier version appeared in Proceedings of IEEE ICDE 2013. )
-                    </p></li>
-                    <li><p>Pinghui Wang, John C.S. Lui, Bruno Ribeiro, Don Towsley, Junzhou Zhao, and Xiaohong Guan,
-                        “Efficiently Estimating Motif Statistics of Large Networks”, ACM Transactions on Knowledge
-                        Discovery from Data, 9(2), 2014. (中国计算机学会B类期刊)
-                    </p></li>
-                    <li>Pinghui Wang, Xiaohong Guan, Junzhou Zhao, Jing Tao, and Tao Qin, “A New Sketch Method for
-                        Measuring Host Connection Degree Distribution”, IEEE Transactions on Information Forensics and
-                        Security, 9(6): 948-960, 2014. (中国计算机学会A类期刊)
-                        </p></li>
-                    <li><p>Pinghui Wang, Wenbo He, and Junzhou Zhao, “A Tale of Three Social Networks: User Activity
-                        Comparisons Among Facebook, Twitter, and Foursquare”, IEEE Internet Computing‘s special issue:
-                        SI: Mar/Apr 2014 – Identity, Privacy, and Deception in Social Networks. (Featured Article of the
-                        Special Technical Community on Social Networks. “Featured Articles” is a section of the Special
-                        Technical Community on Social Networks that will shed light to pieces of social network research
-                        that are considered interesting and promising. Each month one research article will be selected
-                        from the IEEE Computer Society Digital Library to be featured in this section.)
-                    </p></li>
-                    <li><p>Pinghui Wang, Wenbo He, and Xue Liu, “An Efficient Sampling Method for Characterizing Points
-                        of Interests on Maps”, Proceedings ofIEEE ICDE 2014.(中国计算机学会A类会议)
-                    </p></li>
-                    <li><p>Tao Qin, Xiaohong Guan, Wei Li, Pinghui Wang, Min Zhu, “A new connection degree calculation
-                        and measurement method for large scale network monitoring”, Elsevier Journal of Network and
-                        Computer Applications 41: 15-26, 2014. (中国计算机学会B类期刊)
-                    </p></li>
-                    <li><p>Fabricio Murai, Bruno Ribeiro, Don Towsley, and Pinghui Wang, “On Set Size Distribution
-                        Estimation and the Characterization of Large Networks via Sampling”, IEEE Journal on Selected
-                        Areas in Communications 31(6): 1017-1025, 2013. (中国计算机学会A类期刊)
-                    </p></li>
-                    <li><p>Pinghui Wang, Junzhou Zhao, John C.S. Lui, Don Towsley, and Xiaohong Guan, “Sampling Node
-                        Pairs Over Large Graphs”, Proceedings of IEEE ICDE 2013. (中国计算机学会A类会议)
-                    </p></li>
-                    <li><p>Pinghui Wang, Xiaohong Guan, Don Towsley, and Jing Tao, “Virtual indexing based methods for
-                        estimating node connection degrees”, Elsevier Computer Networks 56(12): 2773–2787, 2012.
-                        (中国计算机学会B类期刊)
-                    </p></li>
-                    <li><p>Bruno Ribeiro, Pinghui Wang, Fabricio Murai, and Don Towsley, “Sampling Directed Graphs with
-                        Random Walks”, Proceedings ofIEEE INFOCOM 2012. (中国计算机学会A类会议)
-                    </p></li>
-                </ul>
+            <div class="col-lg-6 col-lg-offset-2">
+                <input name='crawl-qq' type="text" class="form-control" placeholder="QQ号">
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-danger" onclick="javascript:crawl_qq();">爬取</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="tim-note">
+                    <h5><strong>QQ号</strong>个人信息</h5>
+                    <span id="profile-tip" class="label label-danger"></span>
+                </div>
+                <table class='table table-bordered' id="profile-table">
+
+                </table>
+
+                <br/>
+
+                <div class="tim-note">
+                    <h5><strong>QQ号</strong>好友关系</h5>
+                    <span id="friend-tip" class="label label-danger"></span>
+                </div>
+
+                <table class='table table-bordered' id="friend-table">
+
+                </table>
             </div>
         </div>
     </div>
@@ -176,6 +144,100 @@
 
 
 </body>
+<script type="text/javascript">
+
+    function crawl_qq(){
+        qq_num = $("input[name='crawl-qq']").val();
+        $.ajax(
+                    {
+                        url:'./qq',
+                        type:'post',
+                        async:true,
+                        data:{'qq_num':qq_num},
+                        dataType:'json',
+                        error:function()
+                        {
+                            $("#profile-tip").text("QQ号个人信息获取失败，请稍后再试!");
+                            $("#friend-tip").text("QQ号好友关系获取失败，请稍后再试!");
+                        },
+                        success:function(result)
+                        {
+                            state = result['state'];
+                            tip = result['tip'];
+                            var key_dict = new Array();
+                            key_dict["uin"] = "QQ号";
+                            key_dict["age"] = "年龄";
+                            key_dict["sex"] = "性别";
+                            key_dict["nickname"] = "昵称";
+                            key_dict["spacename"] = "空间名";
+                            key_dict["birthyear"] = "出生年";
+                            key_dict["birthday"] = "出生日期";
+                            key_dict["country"] = "国家";
+                            key_dict["province"] = "省";
+                            key_dict["city"] = "市";
+                            key_dict["signature"] = "签名";
+                            key_dict["desc"] = "描述";
+                            $("#profile-table").empty();
+                            $("#friend-table").empty();
+                            if(state == 0){
+                                // 个人信息表
+                                profile = result['profile'];
+                                json_profile = JSON.parse(profile);
+                                friends = result['friends'];
+                                var thead = $("<thead></thead>");
+                                thead.append("<th>属性</th>")
+                                thead.append("<th>值</th>")
+                                thead.appendTo("#profile-table");
+                                var tbody = $("<tbody></tbody>");
+                                for(var item in key_dict){
+                                    var trTemp = $("<tr></tr>");
+
+                                    trTemp.append("<td>"+key_dict[item]+"</td>");
+                                    attr_value = json_profile[item].toString();
+                                    if(item == 'sex'){
+                                        if(attr_value == '2'){
+                                            attr_value = '女';
+                                        }
+                                        else if(attr_value == '1'){
+                                            attr_value = '男';
+                                        }
+                                        else{
+                                            attr_value = '未知';
+                                        }
+                                    }
+                                    trTemp.append("<td>"+attr_value+"</td>");
+                                    tbody.append(trTemp);
+                                }
+                                tbody.appendTo("#profile-table");
+
+                                // 好友关系表
+                                var f_thead = $("<thead></thead>");
+                                f_thead.append("<th>序号</th>")
+                                f_thead.append("<th>好友QQ号</th>")
+                                f_thead.appendTo("#friend-table");
+                                var f_tbody = $("<tbody></tbody>");
+                                friend_list = friends.split(",");
+                                for(var j=0;j<friend_list.length;j++){
+                                    var f_trTemp = $("<tr></tr>");
+                                    f_trTemp.append("<td>"+j.toString()+"</td>");
+                                    f_trTemp.append("<td>"+friend_list[j]+"</td>");
+                                    f_tbody.append(f_trTemp);
+                                }
+                                f_tbody.appendTo("#friend-table");
+                            }
+                            else{
+                                $("#profile-tip").text(tip);
+                                $("#friend-tip").text(tip);
+                            }
+                        }
+                    }
+        );
+    }
+
+
+
+
+</script>
 
 <script src="static/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="static/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
@@ -187,7 +249,6 @@
 <script src="static/js/ct-paper-radio.js"></script>
 <script src="static/js/bootstrap-select.js"></script>
 <script src="static/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
 <script src="static/js/ct-paper.js"></script>
 </html>

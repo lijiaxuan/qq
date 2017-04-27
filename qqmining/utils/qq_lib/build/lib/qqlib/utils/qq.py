@@ -67,7 +67,7 @@ class QQ:
 
     def __init__(self, qq='', pwd='', storage_helper=None, store_json=False,
                  max_page=sys.maxsize, query_time_out=None,
-                 nohup=True):
+                 nohup=True, wait=True):
         self.sys = platform.system()
         if self.sys == 'Windows':
             self.userAgent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36'
@@ -85,6 +85,7 @@ class QQ:
         self.vsig = ''
         self.g_tk = None
         self.nohup = nohup
+        self.wait = wait
         self.start_time = datetime.datetime.now()
         self.end_time = None
         self.requests = requests.Session()
@@ -602,12 +603,15 @@ class QQ:
                     time.sleep(QQConstants.manager_busy_sleep)
                     return QQConstants.qq_other_tag, '{}'
                 elif msg == u'请先登录':
-                    self.re_login = True
-                    qq_logger.warning('[QQ][Profile]%s Wait to login again...' % self.qq)
-                    time.sleep(QQConstants.manager_kickout_sleep)
-                    self.monitor_login()
-                    if self.login_tag != QQConstants.qq_stage_running:
-                        return QQConstants.qq_stop_tag, '{}'
+                    if self.wait:
+                        self.re_login = True
+                        qq_logger.warning('[QQ][Profile]%s Wait to login again...' % self.qq)
+                        time.sleep(QQConstants.manager_kickout_sleep)
+                        self.monitor_login()
+                        if self.login_tag != QQConstants.qq_stage_running:
+                            return QQConstants.qq_stop_tag, '{}'
+                        else:
+                            return QQConstants.qq_other_tag, '{}'
                     else:
                         return QQConstants.qq_other_tag, '{}'
                 elif msg == u'对不起，您的操作太频繁，请稍后再试。':

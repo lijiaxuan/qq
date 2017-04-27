@@ -1,20 +1,5 @@
-Wed, 26 Apr 2017 15:56:23 _internal.py[line:87] WARNING  * Debugger is active!
-Wed, 26 Apr 2017 15:56:23 _internal.py[line:87] INFO  * Debugger pin code: 116-428-175
-Wed, 26 Apr 2017 15:56:23 _internal.py[line:87] INFO  * Running on http://0.0.0.0:8081/ (Press CTRL+C to quit)
-Wed, 26 Apr 2017 15:56:26 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:56:26] "GET /search HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:56:28 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:56:28] "GET /network HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:56:28 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:56:28] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 -
-Wed, 26 Apr 2017 15:56:43 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:56:43] "GET /password HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:56:45 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:56:45] "GET /crawl HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:56:47 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:56:47] "GET /search HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:57:10 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:57:10] "GET /crawl HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:57:12 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:57:12] "GET /password HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:57:14 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:57:14] "GET /network HTTP/1.1" 200 -
-Wed, 26 Apr 2017 15:57:14 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 15:57:14] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 -
-Wed, 26 Apr 2017 16:02:36 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:02:36] "GET /password HTTP/1.1" 200 -
-Wed, 26 Apr 2017 16:02:37 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:02:37] "GET /crawl HTTP/1.1" 200 -
-Wed, 26 Apr 2017 16:02:39 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:02:39] "GET /search HTTP/1.1" 200 -
-Wed, 26 Apr 2017 16:02:59 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:02:59] "GET /crawl HTTP/1.1" 200 -
-Wed, 26 Apr 2017 16:03:02 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:03:02] "GET /password HTTP/1.1" 200 -
-Wed, 26 Apr 2017 16:03:03 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:03:03] "GET /network HTTP/1.1" 200 -
-Wed, 26 Apr 2017 16:03:03 _internal.py[line:87] INFO 127.0.0.1 - - [26/Apr/2017 16:03:03] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 -
+Thu, 27 Apr 2017 12:01:53 _internal.py[line:87] WARNING  * Debugger is active!
+Thu, 27 Apr 2017 12:01:53 _internal.py[line:87] INFO  * Debugger pin code: 116-428-175
+Thu, 27 Apr 2017 12:01:53 _internal.py[line:87] INFO  * Running on http://0.0.0.0:8081/ (Press CTRL+C to quit)
+Thu, 27 Apr 2017 12:02:29 _interThu, 27 Apr 2017 12:02:29 _internal.py[line:87] INFO  * Restarting with stat
+g\\web\\qqweb.py', reloading

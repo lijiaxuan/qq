@@ -67,7 +67,7 @@ class QQ:
 
     def __init__(self, qq='', pwd='', storage_helper=None, store_json=False,
                  max_page=sys.maxsize, query_time_out=None,
-                 nohup=True):
+                 nohup=True, wait=True):
         self.sys = platform.system()
         if self.sys == 'Windows':
             self.userAgent = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.87 Safari/537.36'
@@ -85,6 +85,7 @@ class QQ:
         self.vsig = ''
         self.g_tk = None
         self.nohup = nohup
+        self.wait = wait
         self.start_time = datetime.datetime.now()
         self.end_time = None
         self.requests = requests.Session()
@@ -568,16 +569,17 @@ class QQ:
         headers = {
             'User-Agent': self.userAgent
         }
-        profile_url = 'http://base.s21.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
+        profile_url = 'https://h5.qzone.qq.com/proxy/domain/base.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
         par = {
             'uin': qq,
             'vuin': self.qq,
             'fupdate': 1,
-            'rd': 0.4750982090668201,
+            'rd': 0.3615098747239571,
             'g_tk': self.g_tk
         }
         try:
             r = self.requests.get(profile_url, headers=headers, params=par, timeout=self.query_time_out)
+            print(r.text)
         except Exception as ex:
             logging.warning('Profile fetch failed[Network]:%s' % qq)
             logging.warning(ex)
@@ -602,12 +604,15 @@ class QQ:
                     time.sleep(QQConstants.manager_busy_sleep)
                     return QQConstants.qq_other_tag, '{}'
                 elif msg == u'请先登录':
-                    self.re_login = True
-                    qq_logger.warning('[QQ][Profile]%s Wait to login again...' % self.qq)
-                    time.sleep(QQConstants.manager_kickout_sleep)
-                    self.monitor_login()
-                    if self.login_tag != QQConstants.qq_stage_running:
-                        return QQConstants.qq_stop_tag, '{}'
+                    if self.wait:
+                        self.re_login = True
+                        qq_logger.warning('[QQ][Profile]%s Wait to login again...' % self.qq)
+                        time.sleep(QQConstants.manager_kickout_sleep)
+                        self.monitor_login()
+                        if self.login_tag != QQConstants.qq_stage_running:
+                            return QQConstants.qq_stop_tag, '{}'
+                        else:
+                            return QQConstants.qq_other_tag, '{}'
                     else:
                         return QQConstants.qq_other_tag, '{}'
                 elif msg == u'对不起，您的操作太频繁，请稍后再试。':
@@ -820,7 +825,7 @@ class QQ:
 
 
 if __name__ == '__main__':
-    login_qq = QQ('2185862838', 'aynu4938', nohup=False)
+    login_qq = QQ('1531474354', 'Waterdance1992', nohup=False)
     login_qq.monitor_login()
     if login_qq.login_tag == 0:
         cookie_dict = login_qq.requests.cookies.get_dict()
@@ -832,3 +837,5 @@ if __name__ == '__main__':
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")
+    tag, profile = login_qq.profile('184624210')
+    print(profile)

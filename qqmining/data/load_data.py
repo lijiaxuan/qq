@@ -50,7 +50,7 @@ class DBHelper:
         """
         table_list = self.get_tables()
         write_batch = 100000
-        table_list = table_list[:10]
+        table_list = table_list[:3]
         for table in table_list:
             edge_file_path = os.path.join(self.graph_helper.import_path, 'edge_data.csv')
             edge_file = open(edge_file_path, 'w')
