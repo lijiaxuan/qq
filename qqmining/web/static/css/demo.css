@@ -997,3 +997,7 @@ pre.prettyprint{
 .wrapper {
     /*min-height: 600px;*/
 }
+
+#network-box{
+    margin-bottom:25px;
+}

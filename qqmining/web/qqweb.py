@@ -5,11 +5,15 @@ import logging
 import datetime
 import os
 import pickle
+import random
 from configparser import ConfigParser
+import dpkt
 
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect, session, send_from_directory
 from qqlib.utils.qq_constants import QQConstants
 from qqlib.utils.qq import QQ
+
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'pcap', 'doc', 'docx'])
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
@@ -18,11 +22,29 @@ logging.basicConfig(level=logging.INFO,
                     filemode='w')
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
-@app.route('/network')
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+
+@app.route('/network', methods=['GET', 'POST'])
 def network():
-    return render_template('network.html')
+    if request.method == 'GET':
+        return render_template('network.html', tag_result=None, social_result=None)
+    else:
+        file = request.files['network-file']
+        if file and allowed_file(file.filename):
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        tag_result = list()
+        tag_result.append(['http://www.baidu.com', u'搜索'])
+        tag_result.append(['http://www.sina.com', u'娱乐'])
+        social_result = list()
+        social_result.append(['百度', 'qingyuanxingsi@163.com'])
+        social_result.append(['微信', 'qingyuanxingsi'])
+        return render_template('network.html', tag_result=tag_result, social_result=social_result)
 
 
 @app.route('/qq', methods=['POST'])
@@ -43,7 +65,7 @@ def qq():
     qq_helper.monitor_login()
     print(qq_helper.login_tag)
     """
-    qq_helper.login_tag = 1
+    qq_helper.login_tag = random.randint(0, 3)
     if qq_helper.login_tag == 0:
         # tag, profile = qq_helper.profile(qq_num)
         tag = 0
@@ -124,6 +146,6 @@ def crawl():
 
 
 if __name__ == '__main__':
-    # app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-    # app.config['SESSION_TYPE'] = 'filesystem'
+    app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+    app.config['SESSION_TYPE'] = 'filesystem'
     app.run(debug=True, host='0.0.0.0', port=8081)

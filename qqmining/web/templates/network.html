@@ -19,28 +19,8 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>-->
-    <script type="text/javascript">
-        function initFileInput(ctrlName, uploadUrl) {
-            var control = $('#' + ctrlName);
-
-            control.fileinput({
-                language: 'zh', //设置语言
-                uploadUrl: uploadUrl, //上传的地址
-                allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀
-                showUpload: false, //是否显示上传按钮
-                showCaption: false,//是否显示标题
-                browseClass: "btn btn-primary", //按钮样式
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-            });
-        }
-
-        function load_resources(){
-            initFileInput("network-input", "G:\\workspace\\python\\qq\\qqmining");
-        }
-
-    </script>
 </head>
-<body onload="javascript:load_resources();">
+<body>
 
 <!--    navbar come here          -->
 
@@ -94,13 +74,72 @@
 <div class="wrapper">
 
     <!-- content come here     -->
-    <div class="container">
+    <div id='network-box' class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <label class="control-label">流量分析</label>
-                <input id="network-input" type="file" class="file">
+                <form method="post" enctype="multipart/form-data">
+                    <label class="control-label">流量分析</label>
+                    <input id="network-input" type="file" class="file" name="network-file"
+                           data-show-preview="false" data-show-upload="false" required>
+                    <br />
+                    <button class="col-lg-4 col-lg-offset-4 btn btn-danger" value="upload">分析流量</button>
+                </form>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+        {% if tag_result %}
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="tim-note">
+                    <h5>流量画像结果</h5>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <th>序号</th>
+                        <th>URL</th>
+                        <th>标签</th>
+                    </thead>
+                    <tbody>
+                    {% for tag in tag_result %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td><p>{{tag[0]}}</p></td>
+                        <td><p>{{tag[1]}}</p></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if social_result %}
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="tim-note">
+                    <h5>社交信息提取</h5>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <th>序号</th>
+                        <th>服务提供商</th>
+                        <th>用户ID</th>
+                    </thead>
+                    <tbody>
+                    {% for social in social_result %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td><p>{{social[0]}}</p></td>
+                        <td><p>{{social[1]}}</p></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
     </div>
 
     <footer class="footer-demo section-dark">
