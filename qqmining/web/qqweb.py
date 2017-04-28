@@ -27,7 +27,8 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+    file_extension = filename.rsplit('.', 1)[1].lower()
+    return '.' in filename and file_extension in ALLOWED_EXTENSIONS
 
 
 @app.route('/network', methods=['GET', 'POST'])

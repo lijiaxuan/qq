@@ -34,8 +34,8 @@
       <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/qqweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39318886">
-              <caret line="38" column="32" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.47987616">
+              <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -160,9 +160,9 @@
         <option value="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
         <option value="$PROJECT_DIR$/web/templates/crawl.html" />
         <option value="$PROJECT_DIR$/testsuite/network_test.py" />
-        <option value="$PROJECT_DIR$/web/qqweb.py" />
         <option value="$PROJECT_DIR$/web/templates/network.html" />
         <option value="$PROJECT_DIR$/web/static/css/demo.css" />
+        <option value="$PROJECT_DIR$/web/qqweb.py" />
       </list>
     </option>
   </component>
@@ -227,52 +227,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qq_lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="testsuite" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -952,8 +906,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/qqweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39318886">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.47987616">
+          <caret line="28" column="25" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
