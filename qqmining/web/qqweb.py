@@ -43,6 +43,8 @@ def network():
         return render_template('network.html', tag_result=None, social_result=None)
     else:
         file = request.files['network-file']
+        if not os.path.exists(app.config['UPLOAD_FOLDER']):
+            os.makedirs(app.config['UPLOAD_FOLDER'])
         if file and allowed_file(file.filename):
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
         tag_result = list()
@@ -150,7 +152,9 @@ def search():
                              '3': (27, 35),
                              '4': (35, 100)}
         uin = request.form['uin']
+        uin = uin.strip()
         name = request.form['name']
+        name = name.strip()
         gender = request.form['gender']
         age = request.form['age']
         age_filter = True
@@ -160,9 +164,9 @@ def search():
         if gender == u'不限':
             gender_filter = False
         elif gender == u'男':
-            gender_tag = 1
-        else:
             gender_tag = 0
+        else:
+            gender_tag = 1
         if age == '-1':
             age_filter = False
         else:
