@@ -8,12 +8,17 @@ import pickle
 import random
 from configparser import ConfigParser
 import dpkt
+from elasticsearch import Elasticsearch
 
 from flask import Flask, render_template, request, url_for, redirect, session, send_from_directory
 from qqlib.utils.qq_constants import QQConstants
 from qqlib.utils.qq import QQ
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'pcap', 'doc', 'docx'])
+es = Elasticsearch([{'host': '219.245.186.69', 'port': 9200}])
+
+NODE_INDEX = 'neo4j-index-node'
+RELATIONSHIP_INDEX = 'neo4j-index-relationship'
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
@@ -66,7 +71,8 @@ def qq():
     qq_helper.monitor_login()
     print(qq_helper.login_tag)
     """
-    qq_helper.login_tag = random.randint(0, 3)
+    # qq_helper.login_tag = random.randint(0, 3)
+    qq_helper.login_tag = 0
     if qq_helper.login_tag == 0:
         # tag, profile = qq_helper.profile(qq_num)
         tag = 0
@@ -131,9 +137,26 @@ def qq():
     return json.dumps(result)
 
 
-@app.route('/search')
+@app.route('/search', methods=['GET', 'POST'])
 def search():
-    return render_template('search.html')
+    if request.method == 'GET':
+        return render_template('search.html', user_result=None)
+    else:
+        result = es.search(index=NODE_INDEX, doc_type='QQ')
+        total = result['hits']['total']
+        hits = result['hits']['hits']
+
+        final_user_result = []
+        user_ids = []
+        for hit in hits:
+            source = hit['_source']
+            doc_id = hit['_id']
+            if 'name' not in source:
+                source['name'] = ''
+            name = source['name']
+            uin = source['uin']
+            final_user_result.append((doc_id, uin, name))
+        return render_template('search.html', user_result=final_user_result)
 
 
 @app.route('/password')
