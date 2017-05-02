@@ -69,6 +69,7 @@ class GraphDBHelper:
         :param user_result:
         :return:
         """
+        print("Inserting %d users..." % len(user_result))
         session = self.driver.session()
         user_nodes = {'users': user_result}
         query = 'UNWIND { users } AS map CREATE (n:QQ) SET n = map'
@@ -192,33 +193,38 @@ class GraphDBHelper:
         :param group_info:
         :return:
         """
-        user_data = list()
-        for uin, name, age, sigma1, sigma2, sigma3, gender in user_info:
-            cur_user = {'uin': str(uin),
-                        'name': name,
-                        'age': age,
-                        'sigma1': sigma1,
-                        'sigma2': sigma2,
-                        'sigma3': sigma3,
-                        'gender': gender}
-            user_data.append(cur_user)
-        user_result = {'user_data': user_data}
+        print('Updating user information')
+        batch_size = 100000
+        user_tmp_result = []
+        tag = 0
+        failed = 0
+        for uin, name, age, sigma3, gender in user_info:
+            try:
+                cur_user = {'uin': str(uin),
+                            'name': name,
+                            'age': age,
+                            'sigma3': sigma3,
+                            'gender': gender}
+                user_tmp_result.append(cur_user)
+                tag += 1
+                if tag % batch_size == 0:
+                    print('Inserting users at %d batch' % int(tag/batch_size))
+                    self.add_batch_users(user_tmp_result)
+                    user_tmp_result.clear()
+            except Exception as ex:
+                # print(user)
+                print(ex)
+                print(u'你这是要闹哪样...')
+                user_tmp_result.clear()
+                failed += 1
+        if len(user_tmp_result) != 0:
+            self.add_batch_users(user_tmp_result)
+        print('Failed to parse %d profiles in total...' % failed)
+        print('creating index on user...')
+        # creating indexes
         session = self.driver.session()
-        update_user_query = 'WITH {user_data} AS pairs ' \
-                            'UNWIND pairs AS p ' \
-                            'MERGE (g:QQ {uin:p.uin}) ON MATCH ' \
-                            'SET g.name = p.name,' \
-                            'g.sigma1 = p.sigma1,' \
-                            'g.sigma2 = p.sigma2,' \
-                            'g.sigma3 = p.sigma3,' \
-                            'g.gender = p.gender ' \
-                            'ON CREATE ' \
-                            'SET g.name = p.name,' \
-                            'g.sigma1 = p.sigma1,' \
-                            'g.sigma2 = p.sigma2,' \
-                            'g.sigma3 = p.sigma3,' \
-                            'g.gender = p.gender '
-        session.run(update_user_query, parameters=user_result)
+        index_query = 'CREATE INDEX ON :QQ(uin)'
+        session.run(index_query)
         session.close()
 
     def build_graph(self):

@@ -3,6 +3,9 @@
 import cx_Oracle
 import datetime
 from configparser import ConfigParser
+from neo4j_helper import GraphDBHelper
+import os
+os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 
 class OracleHelper:
@@ -14,9 +17,11 @@ class OracleHelper:
         self.oracle_username = conf.get('oracle_config', 'oracle_username')
         self.oracle_pwd = conf.get('oracle_config', 'oracle_pwd')
         self.oracle_sid = conf.get('oracle_config', 'oracle_sid')
+        # 202.117.54.201:1521/orcl
         self.conn_str = ''.join([self.oracle_host, ':', self.oracle_port, '/', self.oracle_sid])
 
     def get_tables(self):
+        # db = cx_Oracle.connect("scott", "qqdata2015", "202.117.54.201:1521/orcl")
         db = cx_Oracle.connect(self.oracle_username, self.oracle_pwd, self.conn_str)
         table_query_sql = "select TABLE_NAME from all_tab_comments where TABLE_NAME like 'QQ%' order by TABLE_NAME"
         cursor = db.cursor()
@@ -32,14 +37,14 @@ class OracleHelper:
         :param table_name:
         :return:
         """
+        print('Getting user info from %s...' % table_name)
         db = cx_Oracle.connect(self.oracle_username, self.oracle_pwd, self.conn_str)
-        query_sql = "select distinct QQNUMBER, NAME, AGE, SIGMA1, SIGMA2, SIGMA3, GENDER from " + table_name
+        query_sql = "select distinct QQNUMBER, NAME, AGE, SIGMA3, GENDER from " + table_name
         cursor = db.cursor()
-        print(datetime.datetime.now())
         cursor.execute(query_sql)
         res_list = cursor.fetchall()
-        print(datetime.datetime.now())
         db.close()
+        return res_list
 
     def get_group_edu_info(self):
         """
@@ -56,4 +61,9 @@ class OracleHelper:
 
 if __name__ == '__main__':
     oracle_helper = OracleHelper()
-    oracle_helper.get_user_attributes('QQ100')
+    tables = oracle_helper.get_tables()
+    graph_helper = GraphDBHelper()
+    for table in tables:
+        users = oracle_helper.get_user_attributes(table)
+        print("Getting total %d users..." % len(users))
+        graph_helper.update_user_info(users)

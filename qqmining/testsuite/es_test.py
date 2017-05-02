@@ -2,7 +2,7 @@
 
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch([{'host': '219.245.186.69', 'port': 9201}])
+es = Elasticsearch([{'host': '219.245.186.69', 'port': 9200}])
 
 mapping = es.indices.get_mapping()
 
