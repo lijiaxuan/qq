@@ -1,5 +1,2 @@
-Tue, 02 May 2017 20:50:43 _internal.py[line:87] WARNING  * Debugger is active!
-Tue, 02 May 2017 20:50:43 _internal.py[line:87] INFO  * Debugger pin code: 696-220-194
-Tue, 02 May 2017 20:50:57 _internal.py[line:87] INFO 127.0.0.1 - - [02/May/2017 20:50:57] "GET /search HTTP/1.1" 200 -
-Tue, 02 May 2017 20:51:01 base.py[line:82] INFO GET http://219.245.186.69:9200/_search [status:200 request:0.014s]
-Tue, 02 May 2017 20:51:01 _internal.py[line:87] INFO 127.0.0.1 - - [02/May/2017 20:51:01] "POST /search HTTP/1.1" 200 -
+Tue, 02 May 2017 21:00:17 _internal.py[line:87] WARNING  * Debugger is active!
+Tue, 02 May 2017 21:00:17 _internal.py[line:87] INFO  * Debugger pin code: 696-220-194
