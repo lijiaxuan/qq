@@ -13,6 +13,7 @@ from elasticsearch import Elasticsearch
 from flask import Flask, render_template, request, url_for, redirect, session, send_from_directory
 from qqlib.utils.qq_constants import QQConstants
 from qqlib.utils.qq import QQ
+from elasticsearch_dsl import Search, Q
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'pcap', 'doc', 'docx'])
 es = Elasticsearch([{'host': '219.245.186.69', 'port': 9200}])
@@ -140,23 +141,75 @@ def qq():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET':
-        return render_template('search.html', user_result=None)
+        return render_template('search.html', user_result=None, search=False)
     else:
-        result = es.search(index=NODE_INDEX, doc_type='QQ')
-        total = result['hits']['total']
-        hits = result['hits']['hits']
+        age_interval_dict = {'-1': (0, 100),
+                             '0': (0, 18),
+                             '1': (18, 22),
+                             '2': (23, 26),
+                             '3': (27, 35),
+                             '4': (35, 100)}
+        uin = request.form['uin']
+        name = request.form['name']
+        gender = request.form['gender']
+        age = request.form['age']
+        age_filter = True
+        gender_filter = True
+        # 男 1
+        # 女 0
+        if gender == u'不限':
+            gender_filter = False
+        elif gender == u'男':
+            gender_tag = 1
+        else:
+            gender_tag = 0
+        if age == '-1':
+            age_filter = False
+        else:
+            age_low, age_high = age_interval_dict[age]
+        s = Search().using(es)
 
-        final_user_result = []
-        user_ids = []
-        for hit in hits:
-            source = hit['_source']
-            doc_id = hit['_id']
-            if 'name' not in source:
-                source['name'] = ''
-            name = source['name']
-            uin = source['uin']
-            final_user_result.append((doc_id, uin, name))
-        return render_template('search.html', user_result=final_user_result)
+        if len(uin) != 0:
+            s = s.query("match", uin=uin)
+
+        if len(name) != 0:
+            s = s.query("match", name=name)
+
+        if gender_filter:
+            s = s.query("match", gender=gender_tag)
+
+        if age_filter:
+            s = s.filter('range', age={'gte': age_low, 'lt': age_high})
+
+        response = s.execute()
+
+        final_user_result = list()
+        for hit in s:
+            uuid = hit.meta.id
+            final_user_result.append([uuid, hit.uin, hit.age])
+
+        return render_template('search.html', user_result=final_user_result, search=True)
+
+
+@app.route('/user_detail', methods=['GET'])
+def user_details():
+    uin = request.args.get('uin')
+    uuid = request.args.get('uuid')
+    user_detail = es.get(index=NODE_INDEX, doc_type='QQ', id=uuid)
+    user_info = {}
+    if user_detail['found']:
+        user_info = user_detail['_source']
+        if 'name' not in user_info:
+            user_info['name'] = ''
+        gender_tag = user_info['gender']
+        if gender_tag == 0:
+            user_info['gender'] = u'女'
+        elif gender_tag == 1:
+            user_info['gender'] = u'男'
+        else:
+            user_info['gender'] = u'未知'
+
+    return render_template('user_details.html', user_info=user_info)
 
 
 @app.route('/password')

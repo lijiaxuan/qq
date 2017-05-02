@@ -1,46 +1,41 @@
 # -*- coding: utf-8 -*-
 
 from elasticsearch import Elasticsearch
+from elasticsearch_dsl import Search, Q
 
 es = Elasticsearch([{'host': '219.245.186.69', 'port': 9200}])
 
 NODE_INDEX = 'neo4j-index-node'
 RELATIONSHIP_INDEX = 'neo4j-index-relationship'
 
-qq_query_dsl = \
-    {
-        "query": {
-            "filtered": {
-                "filter": {
-                    "range": {
-                        "age": {
-                            "gte": 20,
-                            "lt": 40
-                        }
-                    }
-                }
-            }
-        }
-    }
+name = "张智平"
+uin = ''
+age_filter = True
+gender_filter = True
+age_low = 20
+age_high = 40
+# 男 1
+# 女 0
+gender_tag = 0
+s = Search().using(es)
 
-result = es.search(index=NODE_INDEX, doc_type='QQ')
+if len(uin) != 0:
+    s = s.query("match", uin=uin)
 
-total_cnt = result['hits']['total']
+if len(name) != 0:
+    s = s.query("match", name=name)
 
-hits = result['hits']['hits']
+if gender_filter:
+    s = s.query("match", gender=gender_tag)
 
-final_user_result = {}
-user_ids = []
-for hit in hits:
-    source = hit['_source']
-    doc_id = hit['_id']
-    if 'name' not in source:
-        source['name'] = ''
-    user_ids.append(doc_id)
-    print(source)
-    final_user_result[doc_id] = source
+if age_filter:
+    s = s.filter('range', age={'gte': age_low, 'lt': age_high})
 
-print(total_cnt)
-print(user_ids)
+response = s.execute()
+
+final_user_result = []
+for hit in s:
+    uuid = hit.meta.id
+    final_user_result.append([uuid, hit.uin, hit.name])
+
 print(final_user_result)
-print(result)

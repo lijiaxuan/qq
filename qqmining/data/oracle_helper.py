@@ -63,6 +63,8 @@ if __name__ == '__main__':
     oracle_helper = OracleHelper()
     tables = oracle_helper.get_tables()
     graph_helper = GraphDBHelper()
+    # QQ173 QQ174
+    tables = tables[75:]
     for table in tables:
         users = oracle_helper.get_user_attributes(table)
         print("Getting total %d users..." % len(users))

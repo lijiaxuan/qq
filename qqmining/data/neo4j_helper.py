@@ -69,7 +69,6 @@ class GraphDBHelper:
         :param user_result:
         :return:
         """
-        print("Inserting %d users..." % len(user_result))
         session = self.driver.session()
         user_nodes = {'users': user_result}
         query = 'UNWIND { users } AS map CREATE (n:QQ) SET n = map'
