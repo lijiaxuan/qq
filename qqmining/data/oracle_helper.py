@@ -5,6 +5,7 @@ import datetime
 from configparser import ConfigParser
 from neo4j_helper import GraphDBHelper
 import os
+
 os.environ['NLS_LANG'] = 'SIMPLIFIED CHINESE_CHINA.UTF8'
 
 

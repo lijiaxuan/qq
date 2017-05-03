@@ -21,6 +21,7 @@ class NetworkAnalyzer:
 
         f.close()
 
+
 if __name__ == '__main__':
     analyzer = NetworkAnalyzer()
     analyzer.analysis_http(r'C:\Users\apple\Desktop\test.pcap')

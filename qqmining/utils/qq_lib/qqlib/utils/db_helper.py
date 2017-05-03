@@ -103,7 +103,8 @@ class DBHelper:
                 cursor.execute(sql)
                 final_result = []
                 for cookie in cursor.fetchall():
-                    final_result.append((cookie['cookie_qq'], cookie['cookie_pwd'], cookie['cookie_dict'], cookie['gtk']))
+                    final_result.append(
+                        (cookie['cookie_qq'], cookie['cookie_pwd'], cookie['cookie_dict'], cookie['gtk']))
                 return final_result
         except:
             return list()

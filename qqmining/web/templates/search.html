@@ -5,7 +5,7 @@
     <link rel="icon" type="image/png" href="static/paper_img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>搜索页</title>
+    <title>智能搜索</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -89,7 +89,7 @@
                         </div>
                         -->
 
-                        <form class="search-form" method="post">
+                        <form action="{{ url_for('password') }}" class="search-form" method="post">
                             <label>QQ号</label>
                             <input type="text" name='uin' class="form-control" placeholder="QQ号">
 
@@ -108,7 +108,7 @@
                                 <option value="女">女</option>
                             </select>
 
-                            <label>年龄区间</label>
+                            <label>年龄段</label>
                             <select name="age" class="input-md form-control">
                                 <option value="-1">不限</option>
                                 <option value="0">18岁以下</option>
@@ -245,6 +245,7 @@
         sigma3 = details['sigma3'];
         gender = details['gender'];
     }
+
 
 
 

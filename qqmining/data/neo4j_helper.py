@@ -207,7 +207,7 @@ class GraphDBHelper:
                 user_tmp_result.append(cur_user)
                 tag += 1
                 if tag % batch_size == 0:
-                    print('Inserting users at %d batch' % int(tag/batch_size))
+                    print('Inserting users at %d batch' % int(tag / batch_size))
                     self.add_batch_users(user_tmp_result)
                     user_tmp_result.clear()
             except Exception as ex:

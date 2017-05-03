@@ -207,23 +207,35 @@ def user_details():
             user_info['name'] = ''
         gender_tag = user_info['gender']
         if gender_tag == 0:
-            user_info['gender'] = u'女'
-        elif gender_tag == 1:
             user_info['gender'] = u'男'
+        elif gender_tag == 1:
+            user_info['gender'] = u'女'
         else:
             user_info['gender'] = u'未知'
 
     return render_template('user_details.html', user_info=user_info)
 
 
-@app.route('/password')
-def password():
-    return render_template('password.html')
-
-
 @app.route('/crawl')
 def crawl():
     return render_template('crawl.html')
+
+
+@app.route('/password', methods=['GET', 'POST'])
+def password():
+    if request.method == 'GET':
+        return render_template('password.html', pwd_result=None, search=False)
+    else:
+        username = request.form['username']
+        username = username.strip()
+        email = request.form['email']
+        email = email.strip()
+        gender = request.form['gender']
+        source = request.form['source']
+        final_pwd_result = list()
+        final_pwd_result.append(('', '10466592', 'kcqer@vip.qq.com', 'renren', '', ''))
+        final_pwd_result.append(('', 'w2008928j', 'wangtiandie@126.com', 'renren', '', ''))
+        return render_template('password.html', pwd_result=final_pwd_result, search=True)
 
 
 if __name__ == '__main__':
