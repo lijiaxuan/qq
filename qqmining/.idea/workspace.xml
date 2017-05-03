@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a720346-2f93-457a-9f08-e412602c3d91" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qq_crawler.log" afterPath="$PROJECT_DIR$/web/qq_crawler.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.py" afterPath="$PROJECT_DIR$/web/qqweb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/templates/search.html" afterPath="$PROJECT_DIR$/web/templates/search.html" />
+      <change type="DELETED" beforePath="G:\workspace\python\qq\qqmining\web\uploads\大学生创业申请书_模板.docx" afterPath="" />
     </list>
     <ignored path="QQMining.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -537,9 +535,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3780359" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
