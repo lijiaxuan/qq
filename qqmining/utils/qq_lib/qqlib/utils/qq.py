@@ -22,8 +22,10 @@ if __name__ == '__main__':
     import tea
     from qq_constants import QQConstants
     from mailbox import MailBoxHandler
+    import hieroglyphy
 else:
     from . import tea
+    from . import hieroglyphy
     from .qq_constants import QQConstants
     from .mailbox import MailBoxHandler
 
@@ -64,6 +66,7 @@ class QQ:
     urlSubmit = 'http://ptlogin2.qq.com/login'
     chat_url = 'http://taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6'
     url_success = 'http://qzs.qq.com/qzone/v5/loginsucc.html?para=izone'
+    url_home = 'https://user.qzone.qq.com/'
 
     def __init__(self, qq='', pwd='', storage_helper=None, store_json=False,
                  max_page=sys.maxsize, query_time_out=None,
@@ -104,6 +107,7 @@ class QQ:
         self.sess = None
         self.login_tag = QQConstants.qq_stage_failure
         self.re_login = False
+        self.qzone_token = ''
         # self.captcha_dir = os.getcwd()
         self.captcha_dir = r'G:\workspace\python\batnos\QQCrawler\src\qq_monitor\static\images'
         python_env = sys.version
@@ -111,6 +115,14 @@ class QQ:
             self.is_python2 = True
         else:
             self.is_python2 = False
+
+    def fetch(self, url, data=None, **kw):
+        if data is None:
+            func = self.requests.get
+        else:
+            kw['data'] = data
+            func = self.requests.post
+        return func(url, **kw)
 
     def cookie_login(self, p_skey, p_uin):
         """
@@ -142,12 +154,14 @@ class QQ:
             if self.nohup or self.re_login:
                 self.login_tag = QQConstants.qq_stage_captcha
                 qq_logger.warning('[QQ]%s CAPTCHA needed,I choose death!' % self.qq)
+                print(u'验证码...')
                 return
             self.get_verify_code_new()
             self.verify()
         else:
             self.vcode = self.cap_cd
         self.login()
+        self.qzonetoken()
 
     def prepare_login(self):
         """
@@ -230,6 +244,24 @@ class QQ:
         r = self.requests.get(self.urlCheck, params=par)
         v = re.findall('\'(.*?)\'', r.text)
         self.pt_vcode_v1, self.cap_cd, self.uin, self.session = v[:4]
+
+    def _qzonetoken(self, res, start_str, end_str=';'):
+        i = res.find(start_str)
+        j = res.find(';', i)
+        assert i > 0, 'qzonetoken not found!'
+        raw = res[i + len(start_str): j]
+        return hieroglyphy.decode(raw)
+
+    def qzonetoken(self):
+        print('Getting qzone token...')
+        self.requests.get(self.url_success)
+        print('1')
+        res = self.requests.get(self.url_home + self.qq, headers={
+            'User-Agent': self.userAgent,
+        }).text
+        print('2')
+        print(res)
+        self.qzone_token = self._qzonetoken(res, 'window.g_qzonetoken = (function(){ try{return ')
 
     def fromhex(self, s):
         # Python 3: bytes.fromhex
@@ -575,7 +607,8 @@ class QQ:
             'vuin': self.qq,
             'fupdate': 1,
             'rd': 0.3615098747239571,
-            'g_tk': self.g_tk
+            'g_tk': self.g_tk,
+            'qzonetoken': self.qzone_token
         }
         try:
             r = self.requests.get(profile_url, headers=headers, params=par, timeout=self.query_time_out)
@@ -829,11 +862,13 @@ if __name__ == '__main__':
     login_qq.monitor_login()
     if login_qq.login_tag == 0:
         cookie_dict = login_qq.requests.cookies.get_dict()
+        print(cookie_dict)
         print('QQ号:%s' % login_qq.qq)
         print('p_skey:%s' % cookie_dict['p_skey'])
         print('p_uin:%s' % cookie_dict['p_uin'])
         gtk = login_qq.gtk()
         print("gtk:%s" % gtk)
+        print(login_qq.qzone_token)
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")

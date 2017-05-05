@@ -128,7 +128,7 @@ class GraphDBHelper:
                      'LOAD CSV WITH HEADERS FROM "file:///edge_data.csv" AS line ' \
                      'MATCH (a:QQ {uin: line.from}),(b:Group { gid: line.to}) ' \
                      'CREATE (a)-[:Qun { src:line.from,dst:line.to,' \
-                     'nick:line.nick,age:toInt(line.age), gender:line.gender,auth:line.auth }]->(b)'
+                     'nick:line.nick,age:toInt(line.age), gender:line.gender }]->(b)'
         session = self.driver.session()
         session.run(link_query)
         session.close()
@@ -139,26 +139,38 @@ class GraphDBHelper:
         :param group_info:
         :return:
         """
-        group_data = list()
-        for qun, admin, create_date, title, group_class, desc in group_info:
-            cur_group = {'gid': str(qun),
-                         'admin': str(admin),
-                         'create_date': create_date,
-                         'title': title,
-                         'class': group_class,
-                         'desc': desc}
-            group_data.append(cur_group)
-        group_result = {'group_data': group_data}
+        print('Updating group information')
+        batch_size = 100000
+        group_tmp_result = []
+        tag = 0
+        failed = 0
+        for qun, create_date, title, desc in group_info:
+            try:
+                cur_group = {'gid': str(qun),
+                             'create_date': create_date,
+                             'title': title,
+                             'desc': desc
+                             }
+                group_tmp_result.append(cur_group)
+                tag += 1
+                if tag % batch_size == 0:
+                    print('Inserting groups at %d batch' % int(tag / batch_size))
+                    self.add_batch_groups(group_tmp_result)
+                    group_tmp_result.clear()
+            except Exception as ex:
+                # print(user)
+                print(ex)
+                print(u'你这是要闹哪样...')
+                group_tmp_result.clear()
+                failed += 1
+        if len(group_tmp_result) != 0:
+            self.add_batch_groups(group_tmp_result)
+        print('Failed to parse %d profiles in total...' % failed)
+        print('creating index on group...')
+        # creating indexes
         session = self.driver.session()
-        update_group_query = 'WITH {group_data} AS pairs ' \
-                             'UNWIND pairs AS p ' \
-                             'MERGE (g:Group {gid:p.gid}) ON MATCH ' \
-                             'SET g.admin = p.admin,' \
-                             'g.create_date = p.create_date,' \
-                             'g.title = p.title,' \
-                             'g.class = p.class,' \
-                             'g.desc = p.desc'
-        session.run(update_group_query, parameters=group_result)
+        index_query = 'CREATE INDEX ON :Group(gid)'
+        session.run(index_query)
         session.close()
 
     def update_group_edu_info(self, group_edu_info):
@@ -168,6 +180,8 @@ class GraphDBHelper:
         :return:
         """
         group_data = list()
+        batch_size = 100000
+        cur_tag = 0
         for qun, label, school in group_edu_info:
             cur_group = {'gid': str(qun),
                          'label': label,
@@ -175,6 +189,20 @@ class GraphDBHelper:
                          'edu_tag': 1
                          }
             group_data.append(cur_group)
+            cur_tag += 1
+            if cur_tag % batch_size == 0:
+                print('Updating group education information batch %d...' % int(cur_tag/batch_size))
+                self.update_graph_edu_info(group_data)
+                group_data.clear()
+        if len(group_data) != 0:
+            self.update_graph_edu_info(group_data)
+
+    def update_graph_edu_info(self, group_data):
+        """
+        Update graph education information
+        :param group_data:
+        :return:
+        """
         group_result = {'group_data': group_data}
         session = self.driver.session()
         update_group_query = 'WITH {group_data} AS pairs ' \

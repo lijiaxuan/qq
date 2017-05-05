@@ -2,8 +2,6 @@
 
 import pymssql
 
-import pyreBloom
-import redis
 import os
 from neo4j_helper import GraphDBHelper
 
@@ -17,15 +15,6 @@ class DBHelper:
         self.max_cnt = 1000000000
         self.false_positive_rate = 0.01
         self.default_table_set = {'dtproperties'}
-        self.redis_host = 'localhost'
-        self.redis_port = 6379
-        self.redis_db = 0
-        self.user_filter = pyreBloom.pyreBloom('user_filter',
-                                               self.max_cnt,
-                                               self.false_positive_rate,
-                                               host=self.redis_host,
-                                               port=self.redis_port,
-                                               db=self.redis_db)
         self.graph_helper = GraphDBHelper()
 
     def get_tables(self):
@@ -43,45 +32,44 @@ class DBHelper:
         self.conn.close()
         return final_list
 
-    def append_entities(self):
+    def get_group_dbs(self):
+        """
+        Get group databases
+        :return:
+        """
+        cur = self.__connect()
+        cur.execute("Select Name FROM Master.dbo.SysDatabases order by Name")
+        res_list = cur.fetchall()
+        final_list = list()
+        for res, in res_list:
+            final_list.append(res)
+        self.conn.close()
+        return final_list
+
+    def append_edges(self):
         """
         Get user list from tables
         :return:
         """
         table_list = self.get_tables()
         write_batch = 100000
-        table_list = table_list[:3]
         for table in table_list:
             edge_file_path = os.path.join(self.graph_helper.import_path, 'edge_data.csv')
             edge_file = open(edge_file_path, 'w')
-            edge_file.writelines('from,to,nick,age,gender,auth\n')
+            edge_file.writelines('from,to,nick,age,gender\n')
             write_tag = 0
             print('Appending entities from table %s...' % table)
             edges = self.get_edges(table)
             print('Loading data completed...')
-            cur_qq_list = list()
-            cur_group_set = set()
-            # QQNum, Nick, Age, Gender, Auth, QunNum
-            for qq_num, nick, age, gender, auth, qun_num in edges:
+            # QQNum, Nick, Age, Gender, QunNum
+            for qq_num, nick, age, gender, qun_num in edges:
                 write_tag += 1
                 if write_tag % write_batch == 0:
                     print("Current batch %d" % (int(write_tag / write_batch),))
-                qq_num = str(qq_num)
-                qun_num = str(qun_num)
-                if not self.user_filter.contains(qq_num):
-                    self.user_filter.add(qq_num)
-                    cur_qq_list.append(qq_num)
-                if qun_num not in cur_group_set:
-                    cur_group_set.add(qun_num)
-                cur_line = ','.join([qq_num, qun_num, nick.encode('utf-8'), str(age), str(gender), str(auth)]) + '\n'
+                cur_line = ','.join([str(qq_num), str(qun_num), nick, str(age), str(gender)]) + '\n'
                 edge_file.writelines(cur_line)
             edge_file.flush()
             edge_file.close()
-            print('Appending %d users from %s' % (len(cur_qq_list), table))
-            self.graph_helper.add_users(cur_qq_list)
-            cur_groups = list(cur_group_set)
-            print('Appending %d groups from %s' % (len(cur_groups), table))
-            self.graph_helper.add_groups(cur_groups)
             print('Appending %d edges from %s' % (write_tag, table))
             self.graph_helper.add_edges()
 
@@ -135,7 +123,7 @@ class DBHelper:
         :return:
         """
         cur = self.__connect()
-        query_sql = 'select QQNum, Nick, Age, Gender, Auth, QunNum from ' + table
+        query_sql = 'select QQNum, Nick, Age, Gender, QunNum from ' + table
         cur.execute(query_sql)
         res_list = cur.fetchall()
         self.conn.close()
@@ -189,10 +177,34 @@ class DBHelper:
         self.conn.commit()
         self.conn.close()
 
+    def get_group_info(self, table_name):
+        """
+        get group information
+        """
+        cur = self.__connect()
+        query_sql = 'select QunNum, CreateDate, Title, QunText from ' + table_name
+        cur.execute(query_sql)
+        res_list = cur.fetchall()
+        self.conn.close()
+        return res_list
+
 
 def main():
-    ms = DBHelper(host="219.245.186.247", user="sa", pwd="freemind1992", db="GroupData1")
-    ms.append_entities()
+    qun_prefix = 'GroupData'
+    for qun_index in range(1, 12):
+        cur_qun_db = qun_prefix + str(qun_index)
+        print('Processing db %s' % cur_qun_db)
+        ms = DBHelper(host="219.245.186.249", user="sa", pwd="qq_2015", db=cur_qun_db)
+        ms.append_edges()
+        """
+        tables = ms.get_tables()
+        for table in tables:
+            print('Getting group information from %s' % table)
+            groups = ms.get_group_info(table)
+            print('Inserting %d groups...' % len(groups))
+            ms.graph_helper.update_group_info(groups)
+        """
+    # conn = pymssql.connect(host="219.245.186.249", user="sa", password="qq_2015", database="QunInfo1", charset="utf8")
     """
     groups = ms.get_distinct_groups("Group10")
     final_group_result = [str(group) for group in groups]

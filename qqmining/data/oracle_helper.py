@@ -53,20 +53,18 @@ class OracleHelper:
         :return:
         """
         db = cx_Oracle.connect(self.oracle_username, self.oracle_pwd, self.conn_str)
-        query_sql = "select QUNNUM, LABEL, SCHOOL from qunClass"
+        query_sql = 'select QUNNUM, LABEL, SCHOOL from "qunClass"'
         cursor = db.cursor()
         cursor.execute(query_sql)
         res_list = cursor.fetchall()
         db.close()
+        return res_list
 
 
 if __name__ == '__main__':
     oracle_helper = OracleHelper()
-    tables = oracle_helper.get_tables()
+    print('Loading group education information...')
+    result = oracle_helper.get_group_edu_info()
+    print('Batch inserting data to neo4j...')
     graph_helper = GraphDBHelper()
-    # QQ173 QQ174
-    tables = tables[75:]
-    for table in tables:
-        users = oracle_helper.get_user_attributes(table)
-        print("Getting total %d users..." % len(users))
-        graph_helper.update_user_info(users)
+    graph_helper.update_group_edu_info(result)
