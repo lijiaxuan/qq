@@ -154,7 +154,6 @@ class QQ:
             if self.nohup or self.re_login:
                 self.login_tag = QQConstants.qq_stage_captcha
                 qq_logger.warning('[QQ]%s CAPTCHA needed,I choose death!' % self.qq)
-                print(u'验证码...')
                 return
             self.get_verify_code_new()
             self.verify()
@@ -255,12 +254,9 @@ class QQ:
     def qzonetoken(self):
         print('Getting qzone token...')
         self.requests.get(self.url_success)
-        print('1')
         res = self.requests.get(self.url_home + self.qq, headers={
             'User-Agent': self.userAgent,
         }).text
-        print('2')
-        print(res)
         self.qzone_token = self._qzonetoken(res, 'window.g_qzonetoken = (function(){ try{return ')
 
     def fromhex(self, s):
@@ -548,16 +544,12 @@ class QQ:
         self.session = js['ticket']
 
     def gtk(self):
-        d = self.requests.cookies.get_dict()
-        hash = 5381
-        s = ''
-        if 'p_skey' in d:
-            s = d['p_skey']
-        elif 'skey' in d:
-            s = d['skey']
+        cookies = self.requests.cookies
+        h = 5381
+        s = cookies.get('p_skey') or cookies.get('skey') or ''
         for c in s:
-            hash += (hash << 5) + ord(c)
-        return hash & 0x7fffffff
+            h += (h << 5) + ord(c)
+        return h & 0x7fffffff
 
     def get_qq_info(self, qq):
         """
@@ -601,7 +593,7 @@ class QQ:
         headers = {
             'User-Agent': self.userAgent
         }
-        profile_url = 'https://h5.qzone.qq.com/proxy/domain/base.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
+        profile_url = 'http://base.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
         par = {
             'uin': qq,
             'vuin': self.qq,
@@ -862,7 +854,6 @@ if __name__ == '__main__':
     login_qq.monitor_login()
     if login_qq.login_tag == 0:
         cookie_dict = login_qq.requests.cookies.get_dict()
-        print(cookie_dict)
         print('QQ号:%s' % login_qq.qq)
         print('p_skey:%s' % cookie_dict['p_skey'])
         print('p_uin:%s' % cookie_dict['p_uin'])
@@ -872,5 +863,5 @@ if __name__ == '__main__':
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")
-    tag, profile = login_qq.profile('184624210')
+    tag, profile = login_qq.profile('1341801774')
     print(profile)

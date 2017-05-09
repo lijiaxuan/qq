@@ -188,22 +188,67 @@ class DBHelper:
         self.conn.close()
         return res_list
 
+    def get_hotel_data(self):
+        cur = self.__connect()
+        query_sql = 'SELECT [Name],[CtfTp],[CtfId],[Gender],[Birthday],[Mobile],[Email] FROM kaifang_data'
+        cur.execute(query_sql)
+        res_list = cur.fetchall()
+        self.conn.close()
+        return res_list
+
+    def load_pwd_data(self):
+        """
+        loading password data from database
+        """
+        print('Loading password data...')
+        cur = self.__connect()
+        pwd_sql = "SELECT username,password,password_md5,email,source,gender,bday FROM leak_data_whole"
+        cur.execute(pwd_sql)
+        tag = 0
+        pwd_list = list()
+        batch_size = 100000
+        for username, password, md5, email, source, gender, bday in cur:
+            cur_pwd = {'username': username,
+                       'password': password,
+                       'password_md5': md5,
+                       'email': email,
+                       'source': source,
+                       'pwd_gender': gender,
+                       'bday': bday}
+            pwd_list.append(cur_pwd)
+            tag += 1
+            if tag % batch_size == 0:
+                print('Inserting passwords at %d batch' % int(tag / batch_size))
+                self.graph_helper.add_batch_pwds(pwd_list)
+                pwd_list.clear()
+        if len(pwd_list) != 0:
+            self.graph_helper.add_batch_pwds(pwd_list)
+        cur.close()
+
 
 def main():
+    ms = DBHelper(host="219.245.186.247", user="sa", pwd="freemind1992", db="leak")
+    ms.load_pwd_data()
+    """
+    ms = DBHelper(host="219.245.186.247", user="sa", pwd="freemind1992", db="leak")
+    hotel_data = ms.get_hotel_data()
+    print("Hotel data %d records..." % len(hotel_data))
+    ms.graph_helper.add_hotel_info(hotel_data)
+    """
+    """
     qun_prefix = 'GroupData'
     for qun_index in range(1, 12):
         cur_qun_db = qun_prefix + str(qun_index)
         print('Processing db %s' % cur_qun_db)
         ms = DBHelper(host="219.245.186.249", user="sa", pwd="qq_2015", db=cur_qun_db)
         ms.append_edges()
-        """
         tables = ms.get_tables()
         for table in tables:
             print('Getting group information from %s' % table)
             groups = ms.get_group_info(table)
             print('Inserting %d groups...' % len(groups))
             ms.graph_helper.update_group_info(groups)
-        """
+    """
     # conn = pymssql.connect(host="219.245.186.249", user="sa", password="qq_2015", database="QunInfo1", charset="utf8")
     """
     groups = ms.get_distinct_groups("Group10")

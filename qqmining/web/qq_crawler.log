@@ -1,29 +1,29 @@
-Thu, 04 May 2017 13:01:16 _internal.py[line:87] WARNING  * Debugger is active!
-Thu, 04 May 2017 13:01:16 _internal.py[line:87] INFO  * Debugger pin code: 696-220-194
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /search HTTP/1.1" 200 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/css/bootstrap.min.css HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/css/ct-paper.css HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/css/demo.css HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/paper_img/new_logo.png HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/jquery-1.10.2.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/jquery-ui-1.10.4.custom.min.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/ct-paper-checkbox.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/ct-paper-radio.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/bootstrap-select.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:27 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:27] "GET /static/js/bootstrap-datepicker.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/js/ct-paper.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /search HTTP/1.1" 200 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/paper_img/new_logo.png HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/js/jquery-1.10.2.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/js/jquery-ui-1.10.4.custom.min.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/js/bootstrap.min.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/js/ct-paper-checkbox.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:28 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:28] "GET /static/js/ct-paper-radio.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:29 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:29] "GET /static/js/bootstrap-select.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:29 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:29] "GET /static/js/bootstrap-datepicker.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:29 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:29] "GET /static/js/ct-paper.js HTTP/1.1" 304 -
-Thu, 04 May 2017 13:01:34 base.py[line:82] INFO GET http://219.245.186.69:9200/_search [status:200 request:0.118s]
-Thu, 04 May 2017 13:01:34 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:34] "POST /search HTTP/1.1" 200 -
-Thu, 04 May 2017 13:01:37 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/QQ/024d8361-2f46-11e7-9f08-90e2ba48e70c [status:200 request:0.033s]
-Thu, 04 May 2017 13:01:37 _internal.py[line:87] INFO 127.0.0.1 - - [04/May/2017 13:01:37] "GET /user_detail?uuid=024d8361-2f46-11e7-9f08-90e2ba48e70c&&uin=302713508 HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] WARNING  * Debugger is active!
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO  * Debugger pin code: 696-220-194
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO 219.245.186.100 - - [05/May/2017 22:57:54] "GET /network HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO 219.245.186.100 - - [05/May/2017 22:57:54] "GET /static/css/fileinput.min.css HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO 219.245.186.100 - - [05/May/2017 22:57:54] "GET /static/js/fileinput.min.js HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO 219.245.186.100 - - [05/May/2017 22:57:54] "GET /static/js/locales/zh.js HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO 219.245.186.100 - - [05/May/2017 22:57:54] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 -
+Fri, 05 May 2017 22:57:54 _internal.py[line:87] INFO 219.245.186.100 - - [05/May/2017 22:57:54] "GET /static/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:56 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:57:56] "GET /crawl HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:58 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:57:58] "GET /crawl HTTP/1.1" 200 -
+Fri, 05 May 2017 22:57:59 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:57:59] "GET /search HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:00 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:00] "GET /password HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:01 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:01] "GET /network HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:01 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:01] "GET /static/css/fileinput.min.css HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:01 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:01] "GET /static/js/fileinput.min.js HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:01 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:01] "GET /static/js/locales/zh.js HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:01 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:01] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 -
+Fri, 05 May 2017 22:58:01 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:01] "GET /static/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:02 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:02] "GET /crawl HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:02 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:02] "GET /search HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:53 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:53] "GET /crawl HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:54 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:54] "GET /password HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:55 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:55] "GET /network HTTP/1.1" 200 -
+Fri, 05 May 2017 22:58:55 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:55] "GET /static/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 -
+Fri, 05 May 2017 22:58:56 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 22:58:56] "GET /search HTTP/1.1" 200 -
+Fri, 05 May 2017 23:00:44 base.py[line:82] INFO GET http://219.245.186.69:9200/_search [status:200 request:5.849s]
+Fri, 05 May 2017 23:00:44 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 23:00:44] "POST /search HTTP/1.1" 200 -
+Fri, 05 May 2017 23:00:59 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/QQ/5f9d6e9d-2f33-11e7-9f08-90e2ba48e70c [status:200 request:0.075s]
+Fri, 05 May 2017 23:00:59 _internal.py[line:87] INFO 127.0.0.1 - - [05/May/2017 23:00:59] "GET /user_detail?uuid=5f9d6e9d-2f33-11e7-9f08-90e2ba48e70c&&uin=251169601 HTTP/1.1" 200 -

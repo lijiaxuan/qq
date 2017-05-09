@@ -1,10 +1,13 @@
-Fri, 05 May 2017 12:38:40 connectionpool.py[line:214] INFO Starting new HTTP connection (1): xui.ptlogin2.qq.com
-Fri, 05 May 2017 12:38:41 connectionpool.py[line:214] INFO Starting new HTTP connection (1): check.ptlogin2.qq.com
-Fri, 05 May 2017 12:38:41 connectionpool.py[line:214] INFO Starting new HTTP connection (1): ptlogin2.qq.com
-Fri, 05 May 2017 12:38:41 qq.py[line:346] INFO ptuiCB('0','0','http://ptlogin2.qzone.qq.com/check_sig?pttype=1&uin=1531474354&service=login&nodirect=0&ptsigx=9dd9d59337546a08dea5f356bdb7d4b25d6f6e5326d42acdcb826081d5f195ac608d40c752702e90fe76684572ede9e0c9a8cf0611174738833d59512d8dd684&s_url=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&f_url=&ptlang=2052&ptredirect=100&aid=549000912&daid=5&j_later=0&low_login_hour=0&regmaster=0&pt_login_type=1&pt_aid=0&pt_aaid=0&pt_light=0&pt_3rd_aid=0','0','登录成功！', '青原行思');
+Fri, 05 May 2017 13:15:45 connectionpool.py[line:214] INFO Starting new HTTP connection (1): xui.ptlogin2.qq.com
+Fri, 05 May 2017 13:15:45 connectionpool.py[line:214] INFO Starting new HTTP connection (1): check.ptlogin2.qq.com
+Fri, 05 May 2017 13:15:45 connectionpool.py[line:214] INFO Starting new HTTP connection (1): ptlogin2.qq.com
+Fri, 05 May 2017 13:15:48 qq.py[line:342] INFO ptuiCB('0','0','http://ptlogin2.qzone.qq.com/check_sig?pttype=1&uin=1531474354&service=login&nodirect=0&ptsigx=59377eef8b11408ea79e2cffa5c4a6d28c3a49e09fd7e2d865eba71db305bcce7396ca81fa5d8f4c8b78d0ec085fbf773a420d05512bab756a0011a138c2cfb4&s_url=http%3A%2F%2Fqzs.qq.com%2Fqzone%2Fv5%2Floginsucc.html%3Fpara%3Dizone&f_url=&ptlang=2052&ptredirect=100&aid=549000912&daid=5&j_later=0&low_login_hour=0&regmaster=0&pt_login_type=1&pt_aid=0&pt_aaid=0&pt_light=0&pt_3rd_aid=0','0','登录成功！', '青原行思');
 
-Fri, 05 May 2017 12:38:41 connectionpool.py[line:214] INFO Starting new HTTP connection (1): ptlogin2.qzone.qq.com
-Fri, 05 May 2017 12:38:41 connectionpool.py[line:214] INFO Starting new HTTP connection (1): qzs.qq.com
-Fri, 05 May 2017 12:38:42 qq.py[line:458] INFO [QQ]Visiting qzone:cookie set properly
-Fri, 05 May 2017 12:38:42 qq.py[line:362] INFO Login in successful.
-Fri, 05 May 2017 12:38:42 connectionpool.py[line:805] INFO Starting new HTTPS connection (1): user.qzone.qq.com
+Fri, 05 May 2017 13:15:48 connectionpool.py[line:214] INFO Starting new HTTP connection (1): ptlogin2.qzone.qq.com
+Fri, 05 May 2017 13:15:48 connectionpool.py[line:214] INFO Starting new HTTP connection (1): qzs.qq.com
+Fri, 05 May 2017 13:15:48 qq.py[line:454] INFO [QQ]Visiting qzone:cookie set properly
+Fri, 05 May 2017 13:15:48 qq.py[line:358] INFO Login in successful.
+Fri, 05 May 2017 13:15:49 connectionpool.py[line:805] INFO Starting new HTTPS connection (1): user.qzone.qq.com
+Fri, 05 May 2017 13:15:50 connectionpool.py[line:214] INFO Starting new HTTP connection (1): base.qzone.qq.com
+Fri, 05 May 2017 13:15:50 qq.py[line:620] INFO 请先登录
+Fri, 05 May 2017 13:15:50 qq.py[line:634] WARNING [QQ][Profile]1531474354 Wait to login again...

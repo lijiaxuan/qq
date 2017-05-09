@@ -75,6 +75,30 @@ class GraphDBHelper:
         session.run(query, parameters=user_nodes)
         session.close()
 
+    def add_batch_pwds(self, pwd_result):
+        """
+        Insert batch users into graph db
+        :param user_result:
+        :return:
+        """
+        session = self.driver.session()
+        pwd_nodes = {'pwds': pwd_result}
+        query = 'UNWIND { pwds } AS map CREATE (p:Pwd) SET p = map'
+        session.run(query, parameters=pwd_nodes)
+        session.close()
+
+    def add_batch_hotel_users(self, hotel_users):
+        """
+        Add hotel users
+        :param hotel_users:
+        :return:
+        """
+        session = self.driver.session()
+        hotel_nodes = {'hotels': hotel_users}
+        query = 'UNWIND { hotels } AS map CREATE (h:Hotel) SET h = map'
+        session.run(query, parameters=hotel_nodes)
+        session.close()
+
     def add_groups(self, groups):
         """
         Add groups to the graph database
@@ -191,7 +215,7 @@ class GraphDBHelper:
             group_data.append(cur_group)
             cur_tag += 1
             if cur_tag % batch_size == 0:
-                print('Updating group education information batch %d...' % int(cur_tag/batch_size))
+                print('Updating group education information batch %d...' % int(cur_tag / batch_size))
                 self.update_graph_edu_info(group_data)
                 group_data.clear()
         if len(group_data) != 0:
@@ -254,6 +278,43 @@ class GraphDBHelper:
         session.run(index_query)
         session.close()
 
+    def add_hotel_info(self, hotel_info):
+        """
+        Add hotel information
+        :param hotel_info:
+        :return:
+        """
+        print('Updating hotel information...')
+        batch_size = 100000
+        hotel_tmp_result = []
+        tag = 0
+        failed = 0
+        for name, ctf_tp, ctf_id, hotel_gender, birth, mobile, email in hotel_info:
+            try:
+                cur_user = {'name': name,
+                            'ctf_tp': ctf_tp,
+                            'ctf_id': ctf_id,
+                            'hotel_gender': hotel_gender,
+                            'birth': birth,
+                            'mobile': mobile,
+                            'email': email}
+                hotel_tmp_result.append(cur_user)
+                tag += 1
+                if tag % batch_size == 0:
+                    print('Inserting hotel users at %d batch' % int(tag / batch_size))
+                    self.add_batch_hotel_users(hotel_tmp_result)
+                    hotel_tmp_result.clear()
+            except Exception as ex:
+                # print(user)
+                print(ex)
+                print(u'你这是要闹哪样...')
+                hotel_tmp_result.clear()
+                failed += 1
+        if len(hotel_tmp_result) != 0:
+            self.add_batch_hotel_users(hotel_tmp_result)
+        print('Failed to parse %d profiles in total...' % failed)
+        print('creating index on hotel users...')
+
     def build_graph(self):
         """
         Build graph by adding users and edges
@@ -262,6 +323,7 @@ class GraphDBHelper:
         self.clear_data()
         self.add_users()
         self.add_edges()
+
 
     def clear_data(self):
         """
