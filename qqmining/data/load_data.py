@@ -200,6 +200,7 @@ class DBHelper:
         """
         loading password data from database
         """
+        # TODO:Password Insertion at 2385 batch
         print('Loading password data...')
         cur = self.__connect()
         pwd_sql = "SELECT username,password,password_md5,email,source,gender,bday FROM leak_data_whole"
