@@ -44,98 +44,53 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="nav-tabs-navigation">
-                                <div class="nav-tabs-wrapper">
-                                    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-                                        <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
-                                        <li><a href="#profile" data-toggle="tab">个人属性信息</a></li>
-                                        <li><a href="#messages" data-toggle="tab">教育背景</a></li>
-                                    </ul>
-                                </div>
-                            </div>
                             <div id="my-tab-content" class="tab-content">
-                                <div class="tab-pane active" id="home">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>QQ</th>
-                                            <th>性别</th>
-                                            <th>年龄</th>
-                                            <th>昵称</th>
-                                            <th>群号</th>
-                                            <th>群名称</th>
-                                            <th>群创建时间</th>
-                                            <th>群简介</th>
-                                        </tr>
-                                        </thead>
+                                <div>
+                                    <table class="table table-bordered">
                                         <tbody>
                                         <tr>
-                                            <td>10001713</td>
-                                            <td>未知</td>
-                                            <td>101</td>
-                                            <td>傻不拉几</td>
-                                            <td>10001713</td>
-                                            <td>【石】市都市时尚</td>
-                                            <td>2005-06-17</td>
-                                            <td><p>本空间为所有美发爱好者.发型工作者互相学习交流.分享心情!!!!</p></td>
+                                            <td class="td_fill" colspan="4">基本信息</td>
                                         </tr>
                                         <tr>
-                                            <td>10001713</td>
-                                            <td>未知</td>
-                                            <td>101</td>
-                                            <td>张三</td>
-                                            <td>10001738</td>
-                                            <td>№动感‰の族№</td>
-                                            <td>2005-06-09</td>
-                                            <td><p>の↘緣是天定∧份是人爲↙※``又怎能oo轻易說ツ放棄┈-→`總會有一兲☆┈`</p></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="profile">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>QQ号</th>
-                                            <th>姓名</th>
-                                            <th>空间年龄</th>
-                                            <th>预测年龄</th>
-                                            <th>性别</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
+                                            <td>QQ号</td>
                                             <td>{{user_info['uin']}}</td>
+                                            <td>姓名</td>
                                             <td>{{user_info['name']}}</td>
-                                            <td>{{user_info['age']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>年龄</td>
                                             <td>{{user_info['sigma3']}}</td>
+                                            <td>性别</td>
                                             <td>{{user_info['gender']}}</td>
                                         </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="messages">
-                                    <table class="table table-striped">
-                                        <thead>
                                         <tr>
-                                            <th>QQ号</th>
-                                            <th>群号</th>
-                                            <th>学历</th>
-                                            <th>学校</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>12356</td>
-                                            <td>10001713</td>
-                                            <td>硕士</td>
-                                            <td>西安交通大学</td>
+                                            <td colspan="2">籍贯：{{user_info['hometown']}}</td>
+                                            <td colspan="2">专业：软件工程</td>
                                         </tr>
                                         <tr>
-                                            <td>12356</td>
-                                            <td>10001543</td>
-                                            <td>本科</td>
-                                            <td>西安交通大学</td>
+                                            <td colspan="4">爱好：{{user_info['likes']}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td_fill" colspan="4">教育背景</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">高中</td>
+                                            <td colspan="2">橙橙中学</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">大学</td>
+                                            <td colspan="2">西安交通大学</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td_fill" colspan="4">好友关系</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">992649877</td>
+                                            <td colspan="2">曹鹏飞</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">648754774</td>
+                                            <td colspan="2">贾鹏</td>
                                         </tr>
                                         </tbody>
                                     </table>

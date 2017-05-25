@@ -212,7 +212,8 @@ def user_details():
             user_info['gender'] = u'女'
         else:
             user_info['gender'] = u'未知'
-
+    user_info['likes'] = u'羽毛球'
+    user_info['hometown'] = u'陕西省西安市'
     return render_template('user_details.html', user_info=user_info)
 
 
