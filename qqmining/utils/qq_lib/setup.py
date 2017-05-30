@@ -10,7 +10,7 @@ packages = [
 
 setup(
     name='qqlib',
-    version='0.7.20',
+    version='0.8.0',
     description='A Simple QQ Zone Crawler.',
     author='qingyuanxingsi',
     author_email='qingyuanxingsi@163.com',

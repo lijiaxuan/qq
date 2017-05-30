@@ -64,7 +64,7 @@ class QQ:
     urlCap = 'http://captcha.qq.com/cap_union_show'
     urlImg = 'http://captcha.qq.com/cap_union_new_getcapbysig'
     urlSubmit = 'http://ptlogin2.qq.com/login'
-    chat_url = 'http://taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6'
+    chat_url = 'https://h5.qzone.qq.com/proxy/domain/taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6'
     url_success = 'http://qzs.qq.com/qzone/v5/loginsucc.html?para=izone'
     url_home = 'https://user.qzone.qq.com/'
 
@@ -352,7 +352,7 @@ class QQ:
         headers = {
             'User-Agent': self.userAgent
         }
-        interest_url = 'http://page.qq.com/cgi-bin/profile/interest_get'
+        interest_url = 'https://h5.qzone.qq.com/proxy/domain/page.qq.com/cgi-bin/profile/interest_get'
         par = {
             'uin': qq_num,
             'vuin': self.qq,
@@ -833,10 +833,11 @@ class QQ:
             for msg in msgs:
                 if 'commentlist' in msg:
                     commentList = msg['commentlist']
-                    for comment in commentList:
-                        uin = str(comment['uin'])
-                        if re.match(filter_pattern, uin):
-                            friends.append(uin)
+                    if commentList is not None:
+                        for comment in commentList:
+                            uin = str(comment['uin'])
+                            if re.match(filter_pattern, uin):
+                                friends.append(uin)
             return friends
 
 
