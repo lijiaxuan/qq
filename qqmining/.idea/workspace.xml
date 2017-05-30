@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a720346-2f93-457a-9f08-e412602c3d91" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/qqlib.egg-info/PKG-INFO" afterPath="$PROJECT_DIR$/utils/qq_lib/qqlib.egg-info/PKG-INFO" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/templates/crawl.html" afterPath="$PROJECT_DIR$/web/templates/crawl.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/build/lib/qqlib/utils/qq.py" afterPath="$PROJECT_DIR$/utils/qq_lib/build/lib/qqlib/utils/qq.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" afterPath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_crawler.log" afterPath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_crawler.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qq_crawler.log" afterPath="$PROJECT_DIR$/web/qq_crawler.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.config" afterPath="$PROJECT_DIR$/web/qqweb.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.py" afterPath="$PROJECT_DIR$/web/qqweb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/setup.py" afterPath="$PROJECT_DIR$/utils/qq_lib/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="QQMining.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,10 +45,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/qqweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56806725">
+            <state vertical-scroll-proportion="0.0">
               <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
@@ -66,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crawl.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="crawl.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="19.054054">
-              <caret line="177" column="41" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.34229392">
+              <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -158,8 +149,8 @@
         <option value="$PROJECT_DIR$/web/qqweb.config" />
         <option value="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
         <option value="$PROJECT_DIR$/utils/qq_lib/setup.py" />
-        <option value="$PROJECT_DIR$/web/templates/crawl.html" />
         <option value="$PROJECT_DIR$/web/qqweb.py" />
+        <option value="$PROJECT_DIR$/web/templates/crawl.html" />
       </list>
     </option>
   </component>
@@ -945,21 +936,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.054054">
-          <caret line="177" column="41" selection-start-line="177" selection-start-column="38" selection-end-line="177" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/qqweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56806725">
+        <state vertical-scroll-proportion="0.0">
           <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="72" selection-end-column="10" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34229392">
+          <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
