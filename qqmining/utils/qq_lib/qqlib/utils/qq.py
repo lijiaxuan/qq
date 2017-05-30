@@ -160,7 +160,7 @@ class QQ:
         else:
             self.vcode = self.cap_cd
         self.login()
-        self.qzonetoken()
+        # self.qzonetoken()
 
     def prepare_login(self):
         """
@@ -294,23 +294,6 @@ class QQ:
             tea.encrypt(self.fromhex(pwd1), self.fromhex(s2))
         ).decode().replace('/', '-').replace('+', '*').replace('=', '_')
         return saltPwd
-        """
-        # Python3 Version
-        e = int(self.qq).to_bytes(8, 'big')
-        o = hashlib.md5(self.pwd.encode())
-        r = bytes.fromhex(o.hexdigest())
-        p = hashlib.md5(r + e).hexdigest()
-        a = binascii.b2a_hex(rsa.encrypt(r, puk)).decode()
-        s = hex(len(a) // 2)[2:]
-        l = binascii.hexlify(self.vcode.upper().encode()).decode()
-        c = hex(len(l) // 2)[2:]
-        c = '0' * (4 - len(c)) + c
-        s = '0' * (4 - len(s)) + s
-        salt = s + a + binascii.hexlify(e).decode() + c + l
-        return base64.b64encode(
-            tea.encrypt(bytes.fromhex(salt), bytes.fromhex(p))
-        ).decode().replace('/', '-').replace('+', '*').replace('=', '_')
-        """
 
     def login(self):
         d = self.requests.cookies.get_dict()
@@ -350,11 +333,11 @@ class QQ:
             li = re.findall('http://[^\']+', r.text)
             if len(li):
                 self.urlQzone = li[0]
-            self.g_tk = self.gtk()
             visit_ok = self.visit_qzone()
             if visit_ok:
                 self.login_tag = QQConstants.qq_stage_running
                 self.pt4_token = self.requests.cookies.get_dict()['pt4_token']
+                self.g_tk = self.gtk()
                 logging.info('Login in successful.')
             else:
                 self.login_tag = QQConstants.qq_stage_failure
@@ -593,7 +576,8 @@ class QQ:
         headers = {
             'User-Agent': self.userAgent
         }
-        profile_url = 'http://base.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
+        profile_url = 'https://h5.qzone.qq.com/proxy/domain/base.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
+        """
         par = {
             'uin': qq,
             'vuin': self.qq,
@@ -602,9 +586,16 @@ class QQ:
             'g_tk': self.g_tk,
             'qzonetoken': self.qzone_token
         }
+        """
+        par = {
+            'uin': qq,
+            'vuin': self.qq,
+            'fupdate': 1,
+            'rd': 0.3615098747239571,
+            'g_tk': self.g_tk
+        }
         try:
             r = self.requests.get(profile_url, headers=headers, params=par, timeout=self.query_time_out)
-            print(r.text)
         except Exception as ex:
             logging.warning('Profile fetch failed[Network]:%s' % qq)
             logging.warning(ex)
@@ -859,9 +850,9 @@ if __name__ == '__main__':
         print('p_uin:%s' % cookie_dict['p_uin'])
         gtk = login_qq.gtk()
         print("gtk:%s" % gtk)
-        print(login_qq.qzone_token)
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")
     tag, profile = login_qq.profile('1341801774')
+    print(tag)
     print(profile)
