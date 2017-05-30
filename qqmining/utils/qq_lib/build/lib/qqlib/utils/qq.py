@@ -62,8 +62,9 @@ class QQ:
     urlCap = 'http://captcha.qq.com/cap_union_show'
     urlImg = 'http://captcha.qq.com/cap_union_new_getcapbysig'
     urlSubmit = 'http://ptlogin2.qq.com/login'
-    chat_url = 'http://taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6'
+    chat_url = 'https://h5.qzone.qq.com/proxy/domain/taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6'
     url_success = 'http://qzs.qq.com/qzone/v5/loginsucc.html?para=izone'
+    url_home = 'https://user.qzone.qq.com/'
 
     def __init__(self, qq='', pwd='', storage_helper=None, store_json=False,
                  max_page=sys.maxsize, query_time_out=None,
@@ -104,6 +105,7 @@ class QQ:
         self.sess = None
         self.login_tag = QQConstants.qq_stage_failure
         self.re_login = False
+        self.qzone_token = ''
         # self.captcha_dir = os.getcwd()
         self.captcha_dir = r'G:\workspace\python\batnos\QQCrawler\src\qq_monitor\static\images'
         python_env = sys.version
@@ -111,6 +113,14 @@ class QQ:
             self.is_python2 = True
         else:
             self.is_python2 = False
+
+    def fetch(self, url, data=None, **kw):
+        if data is None:
+            func = self.requests.get
+        else:
+            kw['data'] = data
+            func = self.requests.post
+        return func(url, **kw)
 
     def cookie_login(self, p_skey, p_uin):
         """
@@ -148,6 +158,7 @@ class QQ:
         else:
             self.vcode = self.cap_cd
         self.login()
+        # self.qzonetoken()
 
     def prepare_login(self):
         """
@@ -231,6 +242,23 @@ class QQ:
         v = re.findall('\'(.*?)\'', r.text)
         self.pt_vcode_v1, self.cap_cd, self.uin, self.session = v[:4]
 
+    """
+    def _qzonetoken(self, res, start_str, end_str=';'):
+        i = res.find(start_str)
+        j = res.find(';', i)
+        assert i > 0, 'qzonetoken not found!'
+        raw = res[i + len(start_str): j]
+        return hieroglyphy.decode(raw)
+
+    def qzonetoken(self):
+        print('Getting qzone token...')
+        self.requests.get(self.url_success)
+        res = self.requests.get(self.url_home + self.qq, headers={
+            'User-Agent': self.userAgent,
+        }).text
+        self.qzone_token = self._qzonetoken(res, 'window.g_qzonetoken = (function(){ try{return ')
+    """
+
     def fromhex(self, s):
         # Python 3: bytes.fromhex
         return bytes(bytearray.fromhex(s))
@@ -266,23 +294,6 @@ class QQ:
             tea.encrypt(self.fromhex(pwd1), self.fromhex(s2))
         ).decode().replace('/', '-').replace('+', '*').replace('=', '_')
         return saltPwd
-        """
-        # Python3 Version
-        e = int(self.qq).to_bytes(8, 'big')
-        o = hashlib.md5(self.pwd.encode())
-        r = bytes.fromhex(o.hexdigest())
-        p = hashlib.md5(r + e).hexdigest()
-        a = binascii.b2a_hex(rsa.encrypt(r, puk)).decode()
-        s = hex(len(a) // 2)[2:]
-        l = binascii.hexlify(self.vcode.upper().encode()).decode()
-        c = hex(len(l) // 2)[2:]
-        c = '0' * (4 - len(c)) + c
-        s = '0' * (4 - len(s)) + s
-        salt = s + a + binascii.hexlify(e).decode() + c + l
-        return base64.b64encode(
-            tea.encrypt(bytes.fromhex(salt), bytes.fromhex(p))
-        ).decode().replace('/', '-').replace('+', '*').replace('=', '_')
-        """
 
     def login(self):
         d = self.requests.cookies.get_dict()
@@ -322,11 +333,11 @@ class QQ:
             li = re.findall('http://[^\']+', r.text)
             if len(li):
                 self.urlQzone = li[0]
-            self.g_tk = self.gtk()
             visit_ok = self.visit_qzone()
             if visit_ok:
                 self.login_tag = QQConstants.qq_stage_running
                 self.pt4_token = self.requests.cookies.get_dict()['pt4_token']
+                self.g_tk = self.gtk()
                 logging.info('Login in successful.')
             else:
                 self.login_tag = QQConstants.qq_stage_failure
@@ -341,7 +352,7 @@ class QQ:
         headers = {
             'User-Agent': self.userAgent
         }
-        interest_url = 'http://page.qq.com/cgi-bin/profile/interest_get'
+        interest_url = 'https://h5.qzone.qq.com/proxy/domain/page.qq.com/cgi-bin/profile/interest_get'
         par = {
             'uin': qq_num,
             'vuin': self.qq,
@@ -516,16 +527,12 @@ class QQ:
         self.session = js['ticket']
 
     def gtk(self):
-        d = self.requests.cookies.get_dict()
-        hash = 5381
-        s = ''
-        if 'p_skey' in d:
-            s = d['p_skey']
-        elif 'skey' in d:
-            s = d['skey']
+        cookies = self.requests.cookies
+        h = 5381
+        s = cookies.get('p_skey') or cookies.get('skey') or ''
         for c in s:
-            hash += (hash << 5) + ord(c)
-        return hash & 0x7fffffff
+            h += (h << 5) + ord(c)
+        return h & 0x7fffffff
 
     def get_qq_info(self, qq):
         """
@@ -569,12 +576,22 @@ class QQ:
         headers = {
             'User-Agent': self.userAgent
         }
-        profile_url = 'http://base.s21.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
+        profile_url = 'https://h5.qzone.qq.com/proxy/domain/base.qzone.qq.com/cgi-bin/user/cgi_userinfo_get_all'
+        """
         par = {
             'uin': qq,
             'vuin': self.qq,
             'fupdate': 1,
-            'rd': 0.4750982090668201,
+            'rd': 0.3615098747239571,
+            'g_tk': self.g_tk,
+            'qzonetoken': self.qzone_token
+        }
+        """
+        par = {
+            'uin': qq,
+            'vuin': self.qq,
+            'fupdate': 1,
+            'rd': 0.3615098747239571,
             'g_tk': self.g_tk
         }
         try:
@@ -816,15 +833,16 @@ class QQ:
             for msg in msgs:
                 if 'commentlist' in msg:
                     commentList = msg['commentlist']
-                    for comment in commentList:
-                        uin = str(comment['uin'])
-                        if re.match(filter_pattern, uin):
-                            friends.append(uin)
+                    if commentList is not None:
+                        for comment in commentList:
+                            uin = str(comment['uin'])
+                            if re.match(filter_pattern, uin):
+                                friends.append(uin)
             return friends
 
 
 if __name__ == '__main__':
-    login_qq = QQ('2185862838', 'aynu4938', nohup=False)
+    login_qq = QQ('1531474354', 'Waterdance1992', nohup=False)
     login_qq.monitor_login()
     if login_qq.login_tag == 0:
         cookie_dict = login_qq.requests.cookies.get_dict()
@@ -836,3 +854,6 @@ if __name__ == '__main__':
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")
+    tag, profile = login_qq.friends('1341801774')
+    print(tag)
+    print(profile)

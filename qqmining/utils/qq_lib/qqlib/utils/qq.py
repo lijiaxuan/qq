@@ -22,10 +22,8 @@ if __name__ == '__main__':
     import tea
     from qq_constants import QQConstants
     from mailbox import MailBoxHandler
-    import hieroglyphy
 else:
     from . import tea
-    from . import hieroglyphy
     from .qq_constants import QQConstants
     from .mailbox import MailBoxHandler
 
@@ -244,6 +242,7 @@ class QQ:
         v = re.findall('\'(.*?)\'', r.text)
         self.pt_vcode_v1, self.cap_cd, self.uin, self.session = v[:4]
 
+    """
     def _qzonetoken(self, res, start_str, end_str=';'):
         i = res.find(start_str)
         j = res.find(';', i)
@@ -258,6 +257,7 @@ class QQ:
             'User-Agent': self.userAgent,
         }).text
         self.qzone_token = self._qzonetoken(res, 'window.g_qzonetoken = (function(){ try{return ')
+    """
 
     def fromhex(self, s):
         # Python 3: bytes.fromhex
@@ -854,6 +854,6 @@ if __name__ == '__main__':
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")
-    tag, profile = login_qq.profile('1341801774')
+    tag, profile = login_qq.friends('1341801774')
     print(tag)
     print(profile)

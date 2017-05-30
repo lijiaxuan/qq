@@ -11,7 +11,6 @@ import dpkt
 from elasticsearch import Elasticsearch
 
 from flask import Flask, render_template, request, url_for, redirect, session, send_from_directory
-from qqlib.utils.qq_constants import QQConstants
 from qqlib.utils.qq import QQ
 from elasticsearch_dsl import Search, Q
 
@@ -69,15 +68,14 @@ def qq():
                   3: u'爬取QQ号登录失败，请更换登录QQ号!',
                   4: u'主动退出'}
     qq_helper = QQ(qq_uin, qq_pwd, max_page=5, nohup=True, wait=False)
-    """
     print('Monitoring login...')
     qq_helper.monitor_login()
     print(qq_helper.login_tag)
-    """
     # qq_helper.login_tag = random.randint(0, 3)
-    qq_helper.login_tag = 0
+    # qq_helper.login_tag = 0
     if qq_helper.login_tag == 0:
-        # tag, profile = qq_helper.profile(qq_num)
+        tag, profile = qq_helper.profile(qq_num)
+        """
         tag = 0
         user_profile = {"uin": 1341801774,
                         "is_famous": 0,
@@ -122,6 +120,7 @@ def qq():
                         "qzeduexp": [],
                         "ptimestamp": 1483580293}
         profile = json.dumps(user_profile)
+        """
         friends = set()
         friends.add('302713508')
         friends.add('1531474354')

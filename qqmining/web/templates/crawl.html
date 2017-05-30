@@ -182,8 +182,11 @@
                             if(state == 0){
                                 // 个人信息表
                                 profile = result['profile'];
+                                console.log('11');
                                 json_profile = JSON.parse(profile);
+                                console.log('12');
                                 friends = result['friends'];
+                                console.log('13');
                                 var thead = $("<thead></thead>");
                                 thead.append("<th>属性</th>")
                                 thead.append("<th>值</th>")

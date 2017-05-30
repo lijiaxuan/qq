@@ -9,8 +9,8 @@ packages = [
 ]
 
 setup(
-    name='qqlib',
-    version='0.8.0',
+    name='qqhelper',
+    version='0.8.2',
     description='A Simple QQ Zone Crawler.',
     author='qingyuanxingsi',
     author_email='qingyuanxingsi@163.com',
