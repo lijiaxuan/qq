@@ -70,9 +70,6 @@ def qq():
     qq_helper = QQ(qq_uin, qq_pwd, max_page=5, nohup=True, wait=False)
     print('Monitoring login...')
     qq_helper.monitor_login()
-    print(qq_helper.login_tag)
-    # qq_helper.login_tag = random.randint(0, 3)
-    # qq_helper.login_tag = 0
     if qq_helper.login_tag == 0:
         tag, profile = qq_helper.profile(qq_num)
         """
@@ -122,18 +119,15 @@ def qq():
         profile = json.dumps(user_profile)
         """
         friends = set()
-        friends.add('302713508')
-        friends.add('1531474354')
-        """
-        if tag == 0:
+        if tag == 1:
             result, friends = qq_helper.friends(qq_num)
             print(friends)
-        """
         result = {'state': 0,
                   'tip': '',
                   'profile': profile,
                   'friends': ','.join(list(friends))}
     else:
+        print(state_dict[qq_helper.login_tag])
         result = {'state': qq_helper.login_tag,
                   'tip': state_dict[qq_helper.login_tag]}
     return json.dumps(result)
