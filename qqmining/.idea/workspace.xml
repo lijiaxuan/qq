@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a720346-2f93-457a-9f08-e412602c3d91" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data_fetcher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" afterPath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_crawler.log" afterPath="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_crawler.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qq_crawler.log" afterPath="$PROJECT_DIR$/web/qq_crawler.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.py" afterPath="$PROJECT_DIR$/web/qqweb.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.config" afterPath="$PROJECT_DIR$/web/qqweb.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/qq_lib/setup.py" afterPath="$PROJECT_DIR$/utils/qq_lib/setup.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="QQMining.iws" />
@@ -29,7 +33,7 @@
         <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="856" column="31" selection-start-line="856" selection-start-column="31" selection-end-line="856" selection-end-column="31" />
+              <caret line="352" column="51" selection-start-line="352" selection-start-column="51" selection-end-line="352" selection-end-column="51" />
               <folding>
                 <element signature="e#25#38#0" expanded="true" />
               </folding>
@@ -37,21 +41,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/hieroglyphy/data.py">
+      <file leaf-file-name="qq_constants.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_constants.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/qqweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09411765">
-              <caret line="121" column="20" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
+            <state vertical-scroll-proportion="-7.2">
+              <caret line="62" column="31" selection-start-line="60" selection-start-column="4" selection-end-line="63" selection-end-column="57" />
               <folding>
                 <element signature="e#24#35#0" expanded="true" />
               </folding>
@@ -59,22 +63,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qq.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Program Files/Anaconda3/Lib/site-packages/qqhelper-0.8.1-py3.5.egg/qqlib/utils/qq.py">
+      <file leaf-file-name="data_fetcher.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/data_fetcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="615" column="41" selection-start-line="615" selection-start-column="39" selection-end-line="615" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qq_constants.py" pinned="false" current-in-tab="false">
-        <entry file="file://D:/Program Files/Anaconda3/Lib/site-packages/qqhelper-0.8.1-py3.5.egg/qqlib/utils/qq_constants.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-              <folding />
+            <state vertical-scroll-proportion="0.48235294">
+              <caret line="65" column="33" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+              <folding>
+                <element signature="e#25#62#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,7 +78,7 @@
       <file leaf-file-name="crawl.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.1621623">
+            <state vertical-scroll-proportion="0.0">
               <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
               <folding />
             </state>
@@ -93,8 +89,30 @@
         <entry file="file://$PROJECT_DIR$/web/qqweb.config">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="data.config" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/data.config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="load_data.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/load_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="159" column="0" selection-start-line="157" selection-start-column="8" selection-end-line="162" selection-end-column="22" />
+              <folding>
+                <element signature="e#24#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_crawler.log">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -114,16 +132,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cookie_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testsuite/cookie_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="93" selection-start-line="14" selection-start-column="84" selection-end-line="14" selection-end-column="93" />
               <folding />
             </state>
           </provider>
@@ -168,11 +176,12 @@
         <option value="$PROJECT_DIR$/web/templates/user_details_ii.html" />
         <option value="$PROJECT_DIR$/web/templates/user_details.html" />
         <option value="$PROJECT_DIR$/testsuite/cookie_test.py" />
-        <option value="$PROJECT_DIR$/web/qqweb.config" />
-        <option value="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
-        <option value="$PROJECT_DIR$/utils/qq_lib/setup.py" />
         <option value="$PROJECT_DIR$/web/templates/crawl.html" />
         <option value="$PROJECT_DIR$/web/qqweb.py" />
+        <option value="$PROJECT_DIR$/utils/qq_lib/setup.py" />
+        <option value="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
+        <option value="$PROJECT_DIR$/web/qqweb.config" />
+        <option value="$PROJECT_DIR$/web/data_fetcher.py" />
       </list>
     </option>
   </component>
@@ -208,7 +217,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -251,49 +259,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qq_lib" />
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,7 +293,7 @@
       <recent name="G:\workspace\python\qqmining\web\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.qqweb">
+  <component name="RunManager" selected="Python.data_fetcher">
     <configuration default="false" name="load_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -385,6 +358,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="QQMining" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="data_fetcher" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="QQMining" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web/data_fetcher.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -528,19 +518,21 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="5">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.cookie_test" />
       <item index="1" class="java.lang.String" itemvalue="Python.load_data" />
       <item index="2" class="java.lang.String" itemvalue="Python.qqweb" />
       <item index="3" class="java.lang.String" itemvalue="Python.es_test" />
       <item index="4" class="java.lang.String" itemvalue="Python.qq" />
+      <item index="5" class="java.lang.String" itemvalue="Python.data_fetcher" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.qqweb" />
-        <item index="1" class="java.lang.String" itemvalue="Python.qq" />
-        <item index="2" class="java.lang.String" itemvalue="Python.load_data" />
-        <item index="3" class="java.lang.String" itemvalue="Python.es_test" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.data_fetcher" />
+        <item index="1" class="java.lang.String" itemvalue="Python.qqweb" />
+        <item index="2" class="java.lang.String" itemvalue="Python.qq" />
+        <item index="3" class="java.lang.String" itemvalue="Python.load_data" />
+        <item index="4" class="java.lang.String" itemvalue="Python.es_test" />
       </list>
     </recent_temporary>
   </component>
@@ -558,8 +550,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -567,7 +559,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3410771" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3410771" sideWeight="0.49583334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284055" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -600,13 +592,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/neo4j_helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/data.config">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -722,13 +707,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="3610" column="8" selection-start-line="3610" selection-start-column="8" selection-end-line="3610" selection-end-column="8" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/data.config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -857,13 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/load_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="202" column="15" selection-start-line="202" selection-start-column="15" selection-end-line="202" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/templates/user_details_ii.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -875,14 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="88" selection-start-line="66" selection-start-column="88" selection-end-line="66" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/qqweb.config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/hieroglyphy/data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -920,18 +875,38 @@
     <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_crawler.log">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py">
+    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="856" column="31" selection-start-line="856" selection-start-column="31" selection-end-line="856" selection-end-column="31" />
-          <folding>
-            <element signature="e#25#38#0" expanded="true" />
-          </folding>
+          <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Anaconda3/Lib/site-packages/qqhelper-0.8.1-py3.5.egg/qqlib/utils/qq.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56806725">
+          <caret line="615" column="41" selection-start-line="615" selection-start-column="39" selection-end-line="615" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Anaconda3/Lib/site-packages/qqhelper-0.8.1-py3.5.egg/qqlib/utils/qq_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2857143">
+          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -943,36 +918,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.1621623">
-          <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Anaconda3/Lib/site-packages/qqhelper-0.8.1-py3.5.egg/qqlib/utils/qq_constants.py">
+    <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="21" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Anaconda3/Lib/site-packages/qqhelper-0.8.1-py3.5.egg/qqlib/utils/qq.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="615" column="41" selection-start-line="615" selection-start-column="39" selection-end-line="615" selection-end-column="51" />
-          <folding />
+          <caret line="352" column="51" selection-start-line="352" selection-start-column="51" selection-end-line="352" selection-end-column="51" />
+          <folding>
+            <element signature="e#25#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/qqweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09411765">
-          <caret line="121" column="20" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
+        <state vertical-scroll-proportion="-7.2">
+          <caret line="62" column="31" selection-start-line="60" selection-start-column="4" selection-end-line="63" selection-end-column="57" />
           <folding>
             <element signature="e#24#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/data.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/qqweb.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/load_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="159" column="0" selection-start-line="157" selection-start-column="8" selection-end-line="162" selection-end-column="22" />
+          <folding>
+            <element signature="e#24#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data_fetcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48235294">
+          <caret line="65" column="33" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+          <folding>
+            <element signature="e#25#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
