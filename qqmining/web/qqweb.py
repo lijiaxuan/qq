@@ -14,8 +14,14 @@ from flask import Flask, render_template, request, url_for, redirect, session, s
 from qqlib.utils.qq import QQ
 from elasticsearch_dsl import Search, Q
 
+if __name__ == '__main__':
+    from data_fetcher import DataFetcher
+else:
+    from .data_fetcher import DataFetcher
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'pcap', 'doc', 'docx'])
 es = Elasticsearch([{'host': '219.245.186.69', 'port': 9200}])
+fetcher = DataFetcher()
 
 NODE_INDEX = 'neo4j-index-node'
 RELATIONSHIP_INDEX = 'neo4j-index-relationship'
@@ -29,6 +35,7 @@ logging.basicConfig(level=logging.INFO,
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+GRAPH_FILE_PATH = os.path.join(os.path.join(os.getcwd(), 'data'), 'graph.json')
 
 
 def allowed_file(filename):
@@ -207,7 +214,40 @@ def user_details():
             user_info['gender'] = u'未知'
     user_info['likes'] = u'羽毛球'
     user_info['hometown'] = u'陕西省西安市'
-    return render_template('user_details.html', user_info=user_info)
+    # get education information
+    groups = fetcher.get_group_by_uin(uin)
+    edu_result = list()
+    for group_index, group in enumerate(groups):
+        res = es.search(index=NODE_INDEX, doc_type='Group', body={'query': {'match': {'gid': group}}})
+        hits = res['hits']['total']
+        if hits != 0:
+            group_result = res['hits']['hits'][0]['_source']
+            if 'edu_tag' in group_result:
+                if 'label' not in group_result:
+                    group_result['label'] = ''
+                if 'school' not in group_result:
+                    group_result['school'] = ''
+                edu_result.append(group_result)
+    # draw relation map
+    graph_file = open(GRAPH_FILE_PATH, 'w')
+    graph_result = {
+        'nodes': [],
+        'edges': []
+    }
+    node_tag = len(groups)
+    node_dict = dict()
+    for group_index, group in enumerate(groups):
+        group_users = fetcher.get_users_by_group(str(group))
+        graph_result['nodes'].append({'id': group_index, 'type': 'Group', 'caption': str(group)})
+        for group_user in group_users:
+            if group_user not in node_dict:
+                node_dict[group_user] = node_tag
+                graph_result['nodes'].append({'id': node_tag, 'type': 'QQ', 'caption': group_user})
+                node_tag += 1
+            graph_result['edges'].append({'source': group_index, 'target': node_dict[group_user]})
+    graph_file.write(json.dumps(graph_result))
+    graph_file.close()
+    return render_template('user_details.html', user_info=user_info, edu_info=edu_result)
 
 
 @app.route('/crawl')

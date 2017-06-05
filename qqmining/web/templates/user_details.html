@@ -64,8 +64,8 @@
                                             <td>{{user_info['gender']}}</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="2">籍贯：{{user_info['hometown']}}</td>
-                                            <td colspan="2">专业：软件工程</td>
+                                            <td colspan="2">籍贯</td>
+                                            <td colspan="2">{{user_info['hometown']}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="4">爱好：{{user_info['likes']}}</td>
@@ -73,14 +73,19 @@
                                         <tr>
                                             <td class="td_fill" colspan="4">教育背景</td>
                                         </tr>
+                                        {% if edu_info|count!=0 %}
+                                        {% for edu in edu_info %}
                                         <tr>
-                                            <td colspan="2">高中</td>
-                                            <td colspan="2">橙橙中学</td>
+                                            <td colspan="2">{{edu['title']}}</td>
+                                            <td colspan="1">{{edu['label']}}</td>
+                                            <td colspan="1">{{edu['school']}}</td>
                                         </tr>
+                                        {% endfor %}
+                                        {% else %}
                                         <tr>
-                                            <td colspan="2">大学</td>
-                                            <td colspan="2">西安交通大学</td>
+                                            <td colspan="4">暂无</td>
                                         </tr>
+                                        {% endif %}
                                         <tr>
                                             <td class="td_fill" colspan="4">好友关系</td>
                                         </tr>
@@ -98,8 +103,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
                 <!--  end sliders-navigation -->
 
@@ -157,6 +160,5 @@
 <script src="static/js/ct-paper-radio.js"></script>
 <script src="static/js/bootstrap-select.js"></script>
 <script src="static/js/bootstrap-datepicker.js"></script>
-
 <script src="static/js/ct-paper.js"></script>
 </html>

@@ -72,4 +72,4 @@ class DataFetcher:
 
 if __name__ == '__main__':
     fetcher = DataFetcher()
-    print(fetcher.get_users_by_group('100200024'))
+    print(fetcher.get_users_by_group('76300035'))
