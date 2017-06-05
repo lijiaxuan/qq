@@ -8,6 +8,7 @@ import pickle
 import random
 from configparser import ConfigParser
 import dpkt
+import math
 from elasticsearch import Elasticsearch
 
 from flask import Flask, render_template, request, url_for, redirect, session, send_from_directory
@@ -35,7 +36,6 @@ logging.basicConfig(level=logging.INFO,
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
-GRAPH_FILE_PATH = os.path.join(os.path.join(os.getcwd(), 'data'), 'graph.json')
 
 
 def allowed_file(filename):
@@ -195,6 +195,31 @@ def search():
         return render_template('search.html', user_result=final_user_result, search=True)
 
 
+@app.route('/graph', methods=['POST'])
+def graph():
+    uin = request.values.get('uin', '')
+    graph_result = {
+        'nodes': [],
+        'links': []
+    }
+    groups = fetcher.get_group_by_uin(uin)
+    uin_set = set()
+    for group in groups:
+        cur_group_name = 'G' + str(group)
+        group_users = fetcher.get_users_by_group(str(group))
+        graph_result['nodes'].append({'name': cur_group_name,
+                                      'category': 1,
+                                      'value': str(group),
+                                      'symbol': 'roundRect'
+                                      })
+        for group_user in group_users:
+            if group_user not in uin_set:
+                graph_result['nodes'].append({'name': str(group_user), 'category': 0, 'value': str(group_user)})
+                uin_set.add(group_user)
+            graph_result['links'].append({'source': cur_group_name, 'target': str(group_user)})
+    return json.dumps(graph_result)
+
+
 @app.route('/user_detail', methods=['GET'])
 def user_details():
     uin = request.args.get('uin')
@@ -228,25 +253,6 @@ def user_details():
                 if 'school' not in group_result:
                     group_result['school'] = ''
                 edu_result.append(group_result)
-    # draw relation map
-    graph_file = open(GRAPH_FILE_PATH, 'w')
-    graph_result = {
-        'nodes': [],
-        'edges': []
-    }
-    node_tag = len(groups)
-    node_dict = dict()
-    for group_index, group in enumerate(groups):
-        group_users = fetcher.get_users_by_group(str(group))
-        graph_result['nodes'].append({'id': group_index, 'type': 'Group', 'caption': str(group)})
-        for group_user in group_users:
-            if group_user not in node_dict:
-                node_dict[group_user] = node_tag
-                graph_result['nodes'].append({'id': node_tag, 'type': 'QQ', 'caption': str(group_user)})
-                node_tag += 1
-            graph_result['edges'].append({'source': group_index, 'target': node_dict[group_user]})
-    graph_file.write(json.dumps(graph_result))
-    graph_file.close()
     return render_template('user_details.html', user_info=user_info, edu_info=edu_result)
 
 

@@ -1009,3 +1009,9 @@ select {
 .td_fill{
     background-color:#a59d9d;
 }
+
+#graph_area{
+    height:700px;
+    margin-bottom:20px;
+    margin-top:20px;
+}
