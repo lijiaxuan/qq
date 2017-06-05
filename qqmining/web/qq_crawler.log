@@ -1,9 +1,11 @@
-Mon, 05 Jun 2017 16:02:49 _internal.py[line:87] WARNING  * Debugger is active!
-Mon, 05 Jun 2017 16:02:49 _internal.py[line:87] INFO  * Debugger pin code: 696-220-194
-Mon, 05 Jun 2017 16:02:51 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/QQ/024d8361-2f46-11e7-9f08-90e2ba48e70c [status:200 request:0.007s]
-Mon, 05 Jun 2017 16:02:51 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.007s]
-Mon, 05 Jun 2017 16:02:51 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.005s]
-Mon, 05 Jun 2017 16:02:51 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.007s]
-Mon, 05 Jun 2017 16:02:51 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.003s]
-Mon, 05 Jun 2017 16:02:51 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.004s]
-Mon, 05 Jun 2017 16:02:51 _internal.py[line:87] INFO 127.0.0.1 - - [05/Jun/2017 16:02:51] "GET /user_detail?uuid=024d8361-2f46-11e7-9f08-90e2ba48e70c&&uin=302713508 HTTP/1.1" 200 -
+Mon, 05 Jun 2017 16:46:12 _internal.py[line:87] WARNING  * Debugger is active!
+Mon, 05 Jun 2017 16:46:12 _internal.py[line:87] INFO  * Debugger pin code: 696-220-194
+Mon, 05 Jun 2017 16:46:18 _internal.py[line:87] INFO 127.0.0.1 - - [05/Jun/2017 16:46:18] "GET /search HTTP/1.1" 200 -
+Mon, 05 Jun 2017 16:46:18 _internal.py[line:87] INFO 127.0.0.1 - - [05/Jun/2017 16:46:18] "GET /static/paper_img/new_logo.png HTTP/1.1" 200 -
+Mon, 05 Jun 2017 16:46:27 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/QQ/024d8361-2f46-11e7-9f08-90e2ba48e70c [status:200 request:0.010s]
+Mon, 05 Jun 2017 16:46:27 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.009s]
+Mon, 05 Jun 2017 16:46:27 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.005s]
+Mon, 05 Jun 2017 16:46:27 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.004s]
+Mon, 05 Jun 2017 16:46:27 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.004s]
+Mon, 05 Jun 2017 16:46:27 base.py[line:82] INFO GET http://219.245.186.69:9200/neo4j-index-node/Group/_search [status:200 request:0.003s]
+Mon, 05 Jun 2017 16:46:27 _internal.py[line:87] INFO 127.0.0.1 - - [05/Jun/2017 16:46:27] "GET /user_detail?uuid=024d8361-2f46-11e7-9f08-90e2ba48e70c&&uin=302713508 HTTP/1.1" 200 -

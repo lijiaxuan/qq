@@ -242,7 +242,7 @@ def user_details():
         for group_user in group_users:
             if group_user not in node_dict:
                 node_dict[group_user] = node_tag
-                graph_result['nodes'].append({'id': node_tag, 'type': 'QQ', 'caption': group_user})
+                graph_result['nodes'].append({'id': node_tag, 'type': 'QQ', 'caption': str(group_user)})
                 node_tag += 1
             graph_result['edges'].append({'source': group_index, 'target': node_dict[group_user]})
     graph_file.write(json.dumps(graph_result))
