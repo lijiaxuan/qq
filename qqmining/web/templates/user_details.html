@@ -102,6 +102,67 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if pwd_info|count!=0 %}
+                            <h5>用户密码记录</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>用户名</th>
+                                    <th>邮箱</th>
+                                    <th>密码</th>
+                                    <th>密码MD5值</th>
+                                    <th>来源</th>
+                                </thead>
+                                <tbody>
+                                    {% for pwd in pwd_info %}
+                                    <tr>
+                                        <td>{{pwd['username']}}</td>
+                                        <td>{{pwd['email']}}</td>
+                                        <td>{{pwd['password']}}</td>
+                                        <td>{{pwd['password_md5']}}</td>
+                                        <td>{{pwd['source']}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if hotel_info|count!=0 %}
+                            <h5>关联个人信息</h5>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>姓名</th>
+                                    <th>性别</th>
+                                    <th>手机号</th>
+                                    <th>邮箱</th>
+                                    <th>出生日期</th>
+                                    <th>证件类型</th>
+                                    <th>证件号码</th>
+                                </thead>
+                                <tbody>
+                                    {% for hotel in hotel_info %}
+                                    <tr>
+                                        <td>{{hotel['name']}}</td>
+                                        <td>{{hotel['hotel_gender']}}</td>
+                                        <td>{{hotel['mobile']}}</td>
+                                        <td>{{hotel['email']}}</td>
+                                        <td>{{hotel['birth']}}</td>
+                                        <td>{{hotel['ctf_tp']}}</td>
+                                        <td>{{hotel['ctf_id']}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% endif %}
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div id="graph_area" class="col-md-12">
                         </div>

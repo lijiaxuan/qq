@@ -264,7 +264,65 @@ def user_details():
                 if 'school' not in group_result:
                     group_result['school'] = ''
                 edu_result.append(group_result)
-    return render_template('user_details.html', user_info=user_info, edu_info=edu_result)
+
+    qq_email = uin + '@qq.com'
+    # get password information
+    source_dict = {
+        'renren': u'人人网',
+        'csdn': 'CSDN',
+        'duduniu': u'嘟嘟牛',
+        '126': u'126邮箱',
+        'kaixin': u'开心网',
+        'ys168': u'永硕E盘',
+        'zhenai': u'真爱网',
+        'tianya': u'天涯社区',
+        '163': u'163邮箱'
+    }
+    pwd_result = es.search(index=NODE_INDEX, doc_type='Pwd', body={'query': {'match': {'email': qq_email}}})
+    pwd_hits = pwd_result['hits']['total']
+    final_pwd_result = list()
+    if pwd_hits != 0:
+        pwd_hits_info = pwd_result['hits']['hits']
+        for pwd_hit_info in pwd_hits_info:
+            pwd_source = pwd_hit_info['_source']
+            user_email = pwd_source['email']
+            if user_email == qq_email:
+                pwd_src = pwd_source['source']
+                if pwd_src in source_dict:
+                    pwd_source['source'] = source_dict[pwd_src]
+                else:
+                    pwd_source['source'] = ''
+                final_pwd_result.append(pwd_source)
+            else:
+                break
+
+    # get hotel result
+    # test email
+    # qq_email = 'clyzy12358@163.com'
+    hotel_result = es.search(index=NODE_INDEX, doc_type='Hotel', body={'query': {'match': {'email': qq_email}}})
+    hotel_hits = hotel_result['hits']['total']
+    final_hotel_result = list()
+    if hotel_hits != 0:
+        hotel_hits_info = hotel_result['hits']['hits']
+        for hotel_hit_info in hotel_hits_info:
+            hotel_source = hotel_hit_info['_source']
+            hotel_email = hotel_source['email']
+            if hotel_email == qq_email:
+                hotel_gender = hotel_source['hotel_gender']
+                if hotel_gender == 'M':
+                    hotel_source['hotel_gender'] = u'男'
+                elif hotel_gender == 'F':
+                    hotel_source['hotel_gender'] = u'女'
+                else:
+                    hotel_source['hotel_gender'] = u'不详'
+                final_hotel_result.append(hotel_source)
+            else:
+                break
+    return render_template('user_details.html',
+                           user_info=user_info,
+                           edu_info=edu_result,
+                           pwd_info=final_pwd_result,
+                           hotel_info=final_hotel_result)
 
 
 @app.route('/crawl')
