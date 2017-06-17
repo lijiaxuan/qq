@@ -206,12 +206,23 @@ def graph():
     uin_set = set()
     for group in groups:
         cur_group_name = 'G' + str(group)
+        res = es.search(index=NODE_INDEX, doc_type='Group', body={'query': {'match': {'gid': group}}})
+        hits = res['hits']['total']
+        if hits != 0:
+            group_result = res['hits']['hits'][0]['_source']
+            if 'edu_tag' in group_result:
+                graph_result['nodes'].append({'name': cur_group_name,
+                                              'category': 1,
+                                              'value': str(group),
+                                              'symbol': 'roundRect'
+                                              })
+            else:
+                graph_result['nodes'].append({'name': cur_group_name,
+                                              'category': 1,
+                                              'value': str(group),
+                                              'symbol': 'diamond'
+                                              })
         group_users = fetcher.get_users_by_group(str(group))
-        graph_result['nodes'].append({'name': cur_group_name,
-                                      'category': 1,
-                                      'value': str(group),
-                                      'symbol': 'roundRect'
-                                      })
         for group_user in group_users:
             if group_user not in uin_set:
                 graph_result['nodes'].append({'name': str(group_user), 'category': 0, 'value': str(group_user)})
@@ -270,11 +281,42 @@ def password():
         username = username.strip()
         email = request.form['email']
         email = email.strip()
-        gender = request.form['gender']
         source = request.form['source']
+        source = source.strip()
+        s = Search(using=es, index=NODE_INDEX, doc_type='Pwd')
+
+        if len(username) != 0:
+            s = s.query("match", username=username)
+
+        if len(email) != 0:
+            s = s.query("match", email=email)
+
+        if len(source) != 0:
+            s = s.query("match", source=source)
+
+        source_dict = {
+            'renren': u'人人网',
+            'csdn': 'CSDN',
+            'duduniu': u'嘟嘟牛',
+            '126': u'126邮箱',
+            'kaixin': u'开心网',
+            'ys168': u'永硕E盘',
+            'zhenai': u'真爱网',
+            'tianya': u'天涯社区',
+            '163': u'163邮箱'
+        }
+
+        response = s.execute()
+
         final_pwd_result = list()
-        final_pwd_result.append(('', '10466592', 'kcqer@vip.qq.com', 'renren', '', ''))
-        final_pwd_result.append(('', 'w2008928j', 'wangtiandie@126.com', 'renren', '', ''))
+        for hit in s:
+            # uuid = hit.meta.id
+            pwd_source = ''
+            if hit.source in source_dict:
+                pwd_source = source_dict[hit.source]
+            else:
+                print(hit.source)
+            final_pwd_result.append((hit.username, hit.email, hit.password, hit.password_md5, pwd_source))
         return render_template('password.html', pwd_result=final_pwd_result, search=True)
 
 
