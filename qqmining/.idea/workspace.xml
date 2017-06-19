@@ -2,10 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a720346-2f93-457a-9f08-e412602c3d91" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/templates/password.html" afterPath="$PROJECT_DIR$/web/templates/password.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/1.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/1.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/10.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/10.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/11.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/12.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/13.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/13.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/14.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/15.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/16.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/17.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/18.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/19.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/2.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/2.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/20.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/3.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/3.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/4.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/4.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/5.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/5.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/6.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/6.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/7.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/7.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/8.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/8.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/9.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/9.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/dic-0294.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/english_lower.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/mixed.lst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/pwd_guesser.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/randmixed.lst" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/grammar/structures.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/weiboweb.config" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qq_crawler.log" afterPath="$PROJECT_DIR$/web/qq_crawler.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.py" afterPath="$PROJECT_DIR$/web/qqweb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/templates/user_details.html" afterPath="$PROJECT_DIR$/web/templates/user_details.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="QQMining.iws" />
@@ -27,43 +63,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="user_details.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/user_details.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5405407">
-              <caret line="69" column="40" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="40" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/search.html">
+      <file leaf-file-name="weiboweb.config" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/weiboweb.config">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="232" column="16" selection-start-line="232" selection-start-column="14" selection-end-line="232" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/static/css/demo.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1013" column="14" selection-start-line="1013" selection-start-column="14" selection-end-line="1013" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="crawl.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="184" column="62" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="66" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,61 +76,31 @@
       <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/qqweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42352942">
-              <caret line="357" column="15" selection-start-line="357" selection-start-column="15" selection-end-line="357" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="structures.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/data/grammar/structures.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="105" column="10" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pwd_guesser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/pwd_guesser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="398" column="27" selection-start-line="398" selection-start-column="27" selection-end-line="398" selection-end-column="27" />
               <folding>
-                <element signature="e#24#35#0" expanded="true" />
+                <element signature="e#25#34#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="network.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/network.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.567568">
-              <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.7567568">
-              <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="password.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/password.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.810811">
-              <caret line="110" column="53" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user_details_ii.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/templates/user_details_ii.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="129" column="56" selection-start-line="129" selection-start-column="48" selection-end-line="129" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qq.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -177,6 +151,7 @@
         <option value="$PROJECT_DIR$/web/templates/user_details.html" />
         <option value="$PROJECT_DIR$/web/templates/password.html" />
         <option value="$PROJECT_DIR$/web/qqweb.py" />
+        <option value="$PROJECT_DIR$/web/pwd_guesser.py" />
       </list>
     </option>
   </component>
@@ -256,24 +231,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -292,18 +249,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\workspace\python\qq\qqmining\web" />
+      <recent name="G:\workspace\python\qq\qqmining\web\data" />
       <recent name="G:\workspace\python\qq\qqmining\web\static\js" />
       <recent name="G:\workspace\python\qq\qqmining\web\static\css" />
       <recent name="G:\workspace\python\qq\qqmining\utils" />
-      <recent name="G:\workspace\python\qqmining\web\static\css" />
-      <recent name="G:\workspace\python\qqmining\web\assets\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\workspace\python\qq\qqmining\web\data\grammar" />
       <recent name="G:\workspace\python\qq\qqmining\web\static" />
       <recent name="G:\workspace\python\qqmining\web\static" />
       <recent name="G:\workspace\python\qqmining\web\static\js" />
       <recent name="G:\workspace\python\qqmining\web\static\css" />
-      <recent name="G:\workspace\python\qqmining\web\templates" />
     </key>
   </component>
   <component name="RunManager" selected="Python.qqweb">
@@ -341,23 +298,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="es_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testsuite" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="QQMining" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testsuite/es_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="qq" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -388,6 +328,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="QQMining" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web/data_fetcher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pwd_guesser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="QQMining" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web/pwd_guesser.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -535,17 +492,17 @@
       <item index="0" class="java.lang.String" itemvalue="Python.cookie_test" />
       <item index="1" class="java.lang.String" itemvalue="Python.load_data" />
       <item index="2" class="java.lang.String" itemvalue="Python.qqweb" />
-      <item index="3" class="java.lang.String" itemvalue="Python.es_test" />
-      <item index="4" class="java.lang.String" itemvalue="Python.qq" />
-      <item index="5" class="java.lang.String" itemvalue="Python.data_fetcher" />
+      <item index="3" class="java.lang.String" itemvalue="Python.qq" />
+      <item index="4" class="java.lang.String" itemvalue="Python.data_fetcher" />
+      <item index="5" class="java.lang.String" itemvalue="Python.pwd_guesser" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.qqweb" />
-        <item index="1" class="java.lang.String" itemvalue="Python.qq" />
-        <item index="2" class="java.lang.String" itemvalue="Python.data_fetcher" />
-        <item index="3" class="java.lang.String" itemvalue="Python.load_data" />
-        <item index="4" class="java.lang.String" itemvalue="Python.es_test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.pwd_guesser" />
+        <item index="2" class="java.lang.String" itemvalue="Python.qq" />
+        <item index="3" class="java.lang.String" itemvalue="Python.data_fetcher" />
+        <item index="4" class="java.lang.String" itemvalue="Python.load_data" />
       </list>
     </recent_temporary>
   </component>
@@ -605,39 +562,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/static/css/demo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1013" column="14" selection-start-line="1013" selection-start-column="14" selection-end-line="1013" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="184" column="62" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/qqweb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/static/js/ct-paper.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -902,14 +826,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="184" column="62" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/qq_lib/qqlib/utils/qq.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -926,6 +842,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8494624">
+          <caret line="110" column="53" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.050179213">
+          <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/network.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96594983">
+          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/templates/crawl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="62" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5764706">
+          <caret line="1013" column="14" selection-start-line="1013" selection-start-column="14" selection-end-line="1013" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/templates/search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -934,33 +890,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/css/demo.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1013" column="14" selection-start-line="1013" selection-start-column="14" selection-end-line="1013" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7567568">
-          <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/network.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.567568">
-          <caret line="101" column="30" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/templates/user_details.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5405407">
+        <state vertical-scroll-proportion="0.30107528">
           <caret line="69" column="40" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="40" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -968,21 +900,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/templates/password.html">
+    <entry file="file://$PROJECT_DIR$/web/data/special/1.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.810811">
-          <caret line="110" column="53" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/data/grammar/structures.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="105" column="10" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/pwd_guesser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="398" column="27" selection-start-line="398" selection-start-column="27" selection-end-line="398" selection-end-column="27" />
+          <folding>
+            <element signature="e#25#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/weiboweb.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/qqweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42352942">
-          <caret line="357" column="15" selection-start-line="357" selection-start-column="15" selection-end-line="357" selection-end-column="15" />
-          <folding>
-            <element signature="e#24#35#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

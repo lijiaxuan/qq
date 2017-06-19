@@ -26,6 +26,18 @@ fetcher = DataFetcher()
 
 NODE_INDEX = 'neo4j-index-node'
 RELATIONSHIP_INDEX = 'neo4j-index-relationship'
+source_dict = {
+    'renren': u'人人网',
+    'csdn': 'CSDN',
+    'duduniu': u'嘟嘟牛',
+    '126': u'126邮箱',
+    'kaixin': u'开心网',
+    'ys168': u'永硕E盘',
+    'zhenai': u'真爱网',
+    'tianya': u'天涯社区',
+    '163': u'163邮箱',
+    'qq': 'QQ'
+}
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
@@ -267,18 +279,6 @@ def user_details():
 
     qq_email = uin + '@qq.com'
     # get password information
-    source_dict = {
-        'renren': u'人人网',
-        'csdn': 'CSDN',
-        'duduniu': u'嘟嘟牛',
-        '126': u'126邮箱',
-        'kaixin': u'开心网',
-        'ys168': u'永硕E盘',
-        'zhenai': u'真爱网',
-        'tianya': u'天涯社区',
-        '163': u'163邮箱',
-        'qq': 'QQ'
-    }
     qq_email = 'weeny_84@hotmail.com'
     pwd_result = es.search(index=NODE_INDEX, doc_type='Pwd', body={'query': {'match': {'email': qq_email}}})
     pwd_hits = pwd_result['hits']['total']
@@ -353,19 +353,6 @@ def password():
 
         if len(source) != 0:
             s = s.query("match", source=source)
-
-        source_dict = {
-            'renren': u'人人网',
-            'csdn': 'CSDN',
-            'duduniu': u'嘟嘟牛',
-            '126': u'126邮箱',
-            'kaixin': u'开心网',
-            'ys168': u'永硕E盘',
-            'zhenai': u'真爱网',
-            'tianya': u'天涯社区',
-            '163': u'163邮箱',
-            'qq': 'QQ'
-        }
 
         response = s.execute()
 
