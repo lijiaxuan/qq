@@ -111,6 +111,21 @@
                 </table>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="tim-note">
+                    <h5><strong>微博号</strong>基本信息</h5>
+                    <span id="weibo-profile-tip" class="label label-danger"></span>
+                </div>
+                <table class='table table-bordered' id="weibo-profile-table">
+
+                </table>
+
+                <br/>
+                
+            </div>
+        </div>
     </div>
 
     <footer class="footer-demo section-dark">
@@ -172,76 +187,75 @@
                         dataType:'json',
                         error:function()
                         {
-                            $("#profile-tip").text("QQ号个人信息获取失败，请稍后再试!");
-                            $("#friend-tip").text("QQ号好友关系获取失败，请稍后再试!");
+                            $("#weibo-profile-tip").text("个人信息获取失败，请稍后再试!");
+                            //$("#weibo-job-tip").text("工作经历获取失败，请稍后再试!");
                         },
                         success:function(result)
                         {
                             state = result['state'];
                             tip = result['tip'];
                             var key_dict = new Array();
-                            key_dict["uin"] = "QQ号";
-                            key_dict["age"] = "年龄";
-                            key_dict["sex"] = "性别";
+                            key_dict["weiboid"] = "微博号";
                             key_dict["nickname"] = "昵称";
-                            key_dict["spacename"] = "空间名";
-                            key_dict["birthyear"] = "出生年";
-                            key_dict["birthday"] = "出生日期";
-                            key_dict["country"] = "国家";
-                            key_dict["province"] = "省";
-                            key_dict["city"] = "市";
-                            key_dict["signature"] = "签名";
-                            key_dict["desc"] = "描述";
-                            $("#profile-table").empty();
-                            $("#friend-table").empty();
+                            key_dict["gender"] = "性别";
+                            key_dict["place"] = "地区";
+                            key_dict["briefIntroduction"] = "生日";
+                            key_dict["sexOrientation"] = "性取向";
+                            key_dict["sentiment"] = "感情状况";
+                            key_dict["vipLevel"] = "会员等级";
+                            key_dict["authentication"] = "认证";
+                            key_dict["url"] = "互联网";
+                            
+                            $("#weibo-profile-table").empty();
+                            
                             if(state == 0){
                                 // 个人信息表
-                                profile = result['profile'];
-                                json_profile = JSON.parse(profile);
-                                friends = result['friends'];
+                                profile = result['info'];
+                                //json_profile = JSON.parse(profile);
+                                //friends = result['friends'];
                                 var thead = $("<thead></thead>");
                                 thead.append("<th>属性</th>")
                                 thead.append("<th>值</th>")
-                                thead.appendTo("#profile-table");
+                                thead.appendTo("#weibo-profile-table");
                                 var tbody = $("<tbody></tbody>");
                                 for(var item in key_dict){
                                     var trTemp = $("<tr></tr>");
 
                                     trTemp.append("<td>"+key_dict[item]+"</td>");
                                     attr_value = json_profile[item].toString();
-                                    if(item == 'sex'){
-                                        if(attr_value == '2'){
-                                            attr_value = '女';
-                                        }
-                                        else if(attr_value == '1'){
-                                            attr_value = '男';
-                                        }
-                                        else{
-                                            attr_value = '未知';
-                                        }
-                                    }
+                                    // if(item == 'sex'){
+                                    //     if(attr_value == '2'){
+                                    //         attr_value = '女';
+                                    //     }
+                                    //     else if(attr_value == '1'){
+                                    //         attr_value = '男';
+                                    //     }
+                                    //     else{
+                                    //         attr_value = '未知';
+                                    //     }
+                                    // }
                                     trTemp.append("<td>"+attr_value+"</td>");
                                     tbody.append(trTemp);
                                 }
-                                tbody.appendTo("#profile-table");
+                                tbody.appendTo("#weibo-profile-table");
 
                                 // 好友关系表
-                                var f_thead = $("<thead></thead>");
-                                f_thead.append("<th>序号</th>")
-                                f_thead.append("<th>好友QQ号</th>")
-                                f_thead.appendTo("#friend-table");
-                                var f_tbody = $("<tbody></tbody>");
-                                friend_list = friends.split(",");
-                                for(var j=0;j<friend_list.length;j++){
-                                    var f_trTemp = $("<tr></tr>");
-                                    f_trTemp.append("<td>"+j.toString()+"</td>");
-                                    f_trTemp.append("<td>"+friend_list[j]+"</td>");
-                                    f_tbody.append(f_trTemp);
-                                }
-                                f_tbody.appendTo("#friend-table");
+                                // var f_thead = $("<thead></thead>");
+                                // f_thead.append("<th>序号</th>")
+                                // f_thead.append("<th>好友QQ号</th>")
+                                // f_thead.appendTo("#friend-table");
+                                // var f_tbody = $("<tbody></tbody>");
+                                // friend_list = friends.split(",");
+                                // for(var j=0;j<friend_list.length;j++){
+                                //     var f_trTemp = $("<tr></tr>");
+                                //     f_trTemp.append("<td>"+j.toString()+"</td>");
+                                //     f_trTemp.append("<td>"+friend_list[j]+"</td>");
+                                //     f_tbody.append(f_trTemp);
+                                // }
+                                // f_tbody.appendTo("#friend-table");
                             }
                             $("#profile-tip").text(tip);
-                            $("#friend-tip").text(tip);
+                            //$("#friend-tip").text(tip);
                         }
                     }
         );
