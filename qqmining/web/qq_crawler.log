@@ -1,1 +1,23 @@
-
+Mon, 19 Jun 2017 23:12:21 _internal.py[line:87] WARNING  * Debugger is active!
+Mon, 19 Jun 2017 23:12:21 _internal.py[line:87] INFO  * Debugger pin code: 243-770-775
+Mon, 19 Jun 2017 23:12:21 _internal.py[line:87] INFO  * Running on http://0.0.0.0:8081/ (Press CTRL+C to quit)
+Mon, 19 Jun 2017 23:12:26 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:12:26] "GET /search HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:12:28 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:12:28] "GET /crawl HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:13:20 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:13:20] "POST /weibo HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:13:28 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:13:28] "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 -
+Mon, 19 Jun 2017 23:14:45 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:14:45] "POST /weibo HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:49 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:49] "GET /crawl HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/css/bootstrap.min.css HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/css/ct-paper.css HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/css/demo.css HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/js/jquery-1.10.2.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/js/jquery-ui-1.10.4.custom.min.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/js/bootstrap.min.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/js/ct-paper-checkbox.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:50 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:50] "GET /static/js/ct-paper-radio.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:51 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:51] "GET /static/js/bootstrap-select.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:51 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:51] "GET /static/js/bootstrap-datepicker.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:51 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:51] "GET /static/js/ct-paper.js HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:51 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:51] "GET /static/paper_img/new_logo.png HTTP/1.1" 200 -
+Mon, 19 Jun 2017 23:15:51 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:15:51] "GET /static/css/bootstrap.min.css.map HTTP/1.1" 404 -
+Mon, 19 Jun 2017 23:16:46 _internal.py[line:87] INFO 127.0.0.1 - - [19/Jun/2017 23:16:46] "POST /weibo HTTP/1.1" 200 -
