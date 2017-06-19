@@ -10,7 +10,7 @@ packages = [
 
 setup(
     name='weibo_test',
-    version='0.10',
+    version='0.12',
     description='A Simple weibo Crawler.',
     author='yjchen',
     author_email='tigercyj@163.com',

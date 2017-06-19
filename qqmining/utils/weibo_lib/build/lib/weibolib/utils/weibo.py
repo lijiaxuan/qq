@@ -34,6 +34,7 @@ class weiboInfo:
         self.browser = webdriver.Chrome(self.chromedriver)
         self.browser.set_window_size(1050, 840)
         self.login(weibo,pwd)
+        self.uid = ''
 
     def login(self,weibo,pwd):
         self.browser.get('https://passport.weibo.cn/signin/login?entry=mweibo&r=https://weibo.cn/')
@@ -145,6 +146,7 @@ class weiboInfo:
             print 'Sorry! Failed! Maybe you need to update the code.'
 
     def parseFollows(self,uid):
+        time.sleep(1)
         url = "https://weibo.cn/%s/follow" % uid
         self.browser.get(url)
         follows = self.browser.find_elements_by_xpath('//a[text()="关注他" or text()="关注她"]')
@@ -159,7 +161,22 @@ class weiboInfo:
         else:
             return
 
+    def parseFollowsURL(self,url):
+        self.browser.get(url)
+        fans = self.browser.find_elements_by_xpath('//a[text()="关注他" or text()="关注她"]')
+        for ele in fans:
+            user_url = ele.get_attribute('href')
+            uid = re.findall('uid=(\d+)', user_url, re.S)
+            self.fan_ids.append(uid[0])
+        next_url = self.browser.find_elements_by_xpath('//a[text()="下页"]')
+        if len(next_url) != 0:
+            print next_url[0].get_attribute('href')
+            self.parseFollowsURL(next_url[0].get_attribute('href'))
+        else:
+            return
+
     def parseFans(self,uid):
+        time.sleep(1)
         url = "https://weibo.cn/%s/fans" % uid
         self.browser.get(url)
         fans = self.browser.find_elements_by_xpath('//a[text()="关注他" or text()="关注她"]')
@@ -170,12 +187,27 @@ class weiboInfo:
         next_url = self.browser.find_elements_by_xpath('//a[text()="下页"]')
         if len(next_url) != 0:
             print next_url[0].get_attribute('href')
-            self.parseFans(next_url[0].get_attribute('href'))
+            self.parseFansURL(next_url[0].get_attribute('href'))
+        else:
+            return
+
+    def parseFansURL(self,url):
+        self.browser.get(url)
+        fans = self.browser.find_elements_by_xpath('//a[text()="关注他" or text()="关注她"]')
+        for ele in fans:
+            user_url = ele.get_attribute('href')
+            uid = re.findall('uid=(\d+)', user_url, re.S)
+            self.fan_ids.append(uid[0])
+        next_url = self.browser.find_elements_by_xpath('//a[text()="下页"]')
+        if len(next_url) != 0:
+            print next_url[0].get_attribute('href')
+            self.parseFansURL(next_url[0].get_attribute('href'))
         else:
             return
 
     def parseInfo(self,uid):
         url = "https://weibo.cn/%s/info" % uid
+        self.uid = uid
         self.browser.get(url)
         text1 = self.browser.find_elements_by_xpath('//body/div[@class="c"]')
         if len(text1) <= 3:
@@ -200,6 +232,7 @@ class weiboInfo:
         authentication = re.findall('认证[：:]?(.*?);'.decode('utf8'), contents)
         url = re.findall('互联网[：:]?(.*?);'.decode('utf8'), contents)
         data = {
+            "weiboid" : uid,
             "nickname" : nickname,
             "gender" : gender,
             "place" : place,

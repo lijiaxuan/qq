@@ -161,6 +161,7 @@ def weibo():
     weibo_pwd = str(conf.get('weibo_config', 'weibo_pwd')).strip()
     weibo_helper = weiboInfo(weibo_uin,weibo_pwd)
     tag, info = weibo_helper.parseInfo(weibo_num)
+    
     if(tag == 0):
         weibo_helper.parseFans(weibo_num)
         weibo_helper.parseFollows(weibo_num)
@@ -174,7 +175,7 @@ def weibo():
     else:
         result = {'state': 1,
                   'tip': "不存在该微博号对应的内容"}
-    print json.dumps(result)
+    weibo_helper.browser.close()
     return json.dumps(result)
 	
 @app.route('/search', methods=['GET', 'POST'])
