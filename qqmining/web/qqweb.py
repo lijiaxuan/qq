@@ -15,6 +15,7 @@ from flask import Flask, render_template, request, url_for, redirect, session, s
 from qqlib.utils.qq import QQ
 from elasticsearch_dsl import Search, Q
 
+from weibolib.utils.weibo import weiboInfo
 if __name__ == '__main__':
     from data_fetcher import DataFetcher
 else:
@@ -139,7 +140,31 @@ def qq():
                   'tip': state_dict[qq_helper.login_tag]}
     return json.dumps(result)
 
+@app.route('/weibo',methods=['POST'])
+def weibo():
+    weibo_num = request.values.get('weibo_num', '')
+    conf = ConfigParser()
+    conf.read('weiboweb.config')
+    weibo_uin = str(conf.get('weibo_config', 'weibo_uin')).strip()
+    weibo_pwd = str(conf.get('weibo_config', 'weibo_pwd')).strip()
+    weibo_helper = weiboInfo(weibo_uin,weibo_pwd)
+    tag, info = weibo_helper.parseInfo(weibo_num)
+    if(tag == 0):
+        weibo_helper.parseFans(weibo_num)
+        weibo_helper.parseFollows(weibo_num)
 
+        result = {
+                'state': 0,
+                'info': info,
+                'fans': ','.join(weibo_helper.fan_ids),
+                'follows' : ','.join(weibo_helper.follow_ids)
+        }
+    else:
+        result = {'state': 1,
+                  'tip': "不存在该微博号对应的内容"}
+    print json.dumps(result)
+    return json.dumps(result)
+	
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET':
