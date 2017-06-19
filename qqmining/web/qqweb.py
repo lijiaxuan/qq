@@ -276,8 +276,10 @@ def user_details():
         'ys168': u'永硕E盘',
         'zhenai': u'真爱网',
         'tianya': u'天涯社区',
-        '163': u'163邮箱'
+        '163': u'163邮箱',
+        'qq': 'QQ'
     }
+    qq_email = 'weeny_84@hotmail.com'
     pwd_result = es.search(index=NODE_INDEX, doc_type='Pwd', body={'query': {'match': {'email': qq_email}}})
     pwd_hits = pwd_result['hits']['total']
     final_pwd_result = list()
@@ -298,7 +300,7 @@ def user_details():
 
     # get hotel result
     # test email
-    # qq_email = 'clyzy12358@163.com'
+    qq_email = 'clyzy12358@163.com'
     hotel_result = es.search(index=NODE_INDEX, doc_type='Hotel', body={'query': {'match': {'email': qq_email}}})
     hotel_hits = hotel_result['hits']['total']
     final_hotel_result = list()
@@ -361,7 +363,8 @@ def password():
             'ys168': u'永硕E盘',
             'zhenai': u'真爱网',
             'tianya': u'天涯社区',
-            '163': u'163邮箱'
+            '163': u'163邮箱',
+            'qq': 'QQ'
         }
 
         response = s.execute()
