@@ -1,49 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5a720346-2f93-457a-9f08-e412602c3d91" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/1.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/10.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/10.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/11.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/12.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/13.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/13.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/14.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/15.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/16.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/17.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/18.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/19.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/2.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/20.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/3.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/4.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/5.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/5.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/6.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/6.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/7.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/7.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/8.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/8.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/digits/9.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/special/9.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/dic-0294.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/english_lower.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/mixed.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/pwd_guesser.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/dics/randmixed.lst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/data/grammar/structures.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/weiboweb.config" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qq_crawler.log" afterPath="$PROJECT_DIR$/web/qq_crawler.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/qqweb.py" afterPath="$PROJECT_DIR$/web/qqweb.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5a720346-2f93-457a-9f08-e412602c3d91" name="Default" comment="" />
     <ignored path="QQMining.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -76,8 +34,8 @@
       <file leaf-file-name="qqweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/qqweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.65882355">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -218,20 +176,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="QQMining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="qqmining" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -521,9 +465,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3780359" sideWeight="0.50416666" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -936,8 +880,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/qqweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.65882355">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
           <folding />
         </state>
       </provider>
