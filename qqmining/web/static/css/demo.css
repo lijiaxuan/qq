@@ -1015,3 +1015,8 @@ select {
     margin-bottom:20px;
     margin-top:20px;
 }
+
+#pwd_guess_table>tbody>tr>td, #pwd_guess_table>thead>tr>th{
+    vertical-align:middle;
+    text-align:center;
+}

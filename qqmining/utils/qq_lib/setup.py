@@ -10,7 +10,7 @@ packages = [
 
 setup(
     name='qqhelper',
-    version='0.8.3',
+    version='0.9.0',
     description='A Simple QQ Zone Crawler.',
     author='qingyuanxingsi',
     author_email='qingyuanxingsi@163.com',
