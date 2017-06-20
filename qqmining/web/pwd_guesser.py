@@ -1,12 +1,20 @@
 # -*- coding: utf-8 -*-
 
-import os
+import sys, os
 from pypinyin import lazy_pinyin
 import random
 
 """
 A terribly naive implementation of Personal-PCFG
 """
+
+
+def cur_file_dir():
+    path = sys.path[0]
+    if os.path.isdir(path):
+        return path
+    elif os.path.isfile(path):
+        return os.path.dirname(path)
 
 
 def convert_grammar(grammar):
@@ -297,11 +305,18 @@ class NaivePCFGGuesser:
         :param id:
         :return:
         """
-        name_candidates = gen_name_candidates(name)
-        birth_candidates = gen_birth_candidates(birth)
+        if name is None:
+            name_candidates = list()
+        else:
+            name_candidates = gen_name_candidates(name)
+        if birth is None:
+            birth_candidates = list()
+        else:
+            birth_candidates = gen_birth_candidates(birth)
         gen_tag = 0
-        email_prefix = email[:find_last(email, '@')]
-        print(email_prefix)
+        email_prefix = None
+        if email is not None:
+            email_prefix = email[:find_last(email, '@')]
         final_pwds = list()
         for short_grammar, prob in self.grammar_list:
             cur_pwd = ''
@@ -353,28 +368,28 @@ class NaivePCFGGuesser:
                         ok = False
                         break
                 elif seg_cat == 'E':
-                    if len(email_prefix)<seg_len:
+                    if email_prefix is not None and len(email_prefix) < seg_len:
                         print('cannot find proper email candidates...')
                         ok = False
                         break
                     else:
                         cur_pwd += email_prefix[:seg_len]
                 elif seg_cat == 'A':
-                    if len(account)<seg_len:
+                    if account is not None and len(account) < seg_len:
                         print('cannot find proper account candidates...')
                         ok = False
                         break
                     else:
                         cur_pwd += account[:seg_len]
                 elif seg_cat == 'C':
-                    if len(cellphone)<seg_len:
+                    if cellphone is not None and len(cellphone) < seg_len:
                         print('cannot find proper cellphone candidates...')
                         ok = False
                         break
                     else:
                         cur_pwd += cellphone[:seg_len]
                 elif seg_cat == 'I':
-                    if len(id)<seg_len:
+                    if id is not None and len(id) < seg_len:
                         print('cannot find proper id candidates...')
                         ok = False
                         break
@@ -396,10 +411,10 @@ if __name__ == '__main__':
     guesser = NaivePCFGGuesser(r'G:\workspace\python\qq\qqmining\web\data',
                                r'G:\workspace\python\qq\qqmining\web\data\dics\dic-0294.txt')
     guesses = guesser.gen_guesses(account='qingyuanxingsi',
-                        birth='19920818',
-                        name='梁肖',
-                        email='qingyuanxingsi@163.com',
-                        cellphone='15619026193',
-                        id='429004199208185917')
+                                  birth='19920818',
+                                  name='曹鹏飞',
+                                  email='qingyuanxingsi@163.com',
+                                  cellphone='15619026193',
+                                  id='429004199208185917')
     print(guesses)
     print(len(guesses))

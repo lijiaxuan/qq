@@ -57,11 +57,8 @@ if __name__ == '__main__':
 class QQ:
     appid = 549000912
     urlLogin = 'http://xui.ptlogin2.qq.com/cgi-bin/xlogin'
-    url_gettype = 'http://captcha.qq.com/cap_union_new_gettype'
-    urlCheck = 'http://check.ptlogin2.qq.com/check'
-    urlCap = 'http://captcha.qq.com/cap_union_show'
-    urlImg = 'http://captcha.qq.com/cap_union_new_getcapbysig'
-    urlSubmit = 'http://ptlogin2.qq.com/login'
+    urlCheck = 'https://ssl.ptlogin2.qq.com/check'
+    urlSubmit = 'https://ssl.ptlogin2.qq.com/login'
     chat_url = 'https://h5.qzone.qq.com/proxy/domain/taotao.qq.com/cgi-bin/emotion_cgi_msglist_v6'
     url_success = 'http://qzs.qq.com/qzone/v5/loginsucc.html?para=izone'
     url_home = 'https://user.qzone.qq.com/'
@@ -77,15 +74,14 @@ class QQ:
         self.qq = qq
         self.pwd = pwd
         self.nickname = None
-        self.vcode = ''
         self.session = None
         self.login_cookie = None
         self.vcodeShow = 0
-        self.loginSig = ''
         self.pt_vcode_v1 = ''
-        self.vsig = ''
+        self.cap_cd = ''
         self.g_tk = None
         self.nohup = nohup
+        self.login_sign = ''
         self.wait = wait
         self.start_time = datetime.datetime.now()
         self.end_time = None
@@ -102,6 +98,7 @@ class QQ:
         self.pt4_token = None
         self.cnt = 0
         self.uin = None
+        self.code = ''
         self.sess = None
         self.login_tag = QQConstants.qq_stage_failure
         self.re_login = False
@@ -145,18 +142,24 @@ class QQ:
         self.login_tag = QQConstants.qq_stage_failure
         # clear session cookies
         self.requests.cookies.clear_session_cookies()
-        self.xlogin()
-        self.check()
-        if self.pt_vcode_v1 == '1':
+        results = self.xlogin()
+        assert not results['err'], results['msg']
+        self.login_sign = results['login_sign']
+        results = self.check()
+        assert not results['err'], results['msg']
+        matches = re.findall('\'(.*?)\'', results['data'])
+        self.pt_vcode_v1, self.cap_cd, self.uin, self.session = matches[:4]
+        if matches[0] == '1':
             self.vcodeShow = 1
             if self.nohup or self.re_login:
                 self.login_tag = QQConstants.qq_stage_captcha
                 qq_logger.warning('[QQ]%s CAPTCHA needed,I choose death!' % self.qq)
                 return
-            self.get_verify_code_new()
+            results = self.get_verify_code_new()
+            assert not results['err'], results['msg']
             self.verify()
         else:
-            self.vcode = self.cap_cd
+            self.code = self.cap_cd
         self.login()
         # self.qzonetoken()
 
@@ -168,14 +171,19 @@ class QQ:
         self.login_tag = QQConstants.qq_stage_failure
         # clear session cookies
         self.requests.cookies.clear_session_cookies()
-        self.xlogin()
-        self.check()
+        results = self.xlogin()
+        assert not results['err'], results['msg']
+        self.login_sign = results['login_sign']
+        results = self.check()
+        assert not results['err'], results['msg']
+        matches = re.findall('\'(.*?)\'', results['data'])
+        self.pt_vcode_v1, self.cap_cd, self.uin, self.session = matches[:4]
         if self.pt_vcode_v1 == '1':
             self.vcodeShow = 1
             self.get_verify_code_new()
             return self.vcodeShow, self.verify_img_name
         else:
-            self.vcode = self.cap_cd
+            self.code = self.cap_cd
             return 0, ''
 
     def login_with_vcode(self, vcode=None):
@@ -193,15 +201,18 @@ class QQ:
         :return:
         """
         par = {
-            'proxy_url': 'http://qzs.qq.com/qzone/v6/portal/proxy.html',
-            'daid': 5,
-            'no_verifyimg': 1,
             'appid': self.appid,
             's_url': self.url_success
         }
-        r = self.requests.get(self.urlLogin, params=par)
-        if 'pt_login_sig' in r.cookies:
-            self.loginSig = r.cookies['pt_login_sig']
+        res = self.requests.get(self.urlLogin, params=par)
+        if res.status_code == 200:
+            sign = self.requests.cookies.get('pt_login_sig')
+            if sign:
+                return {'err': 0, 'msg': 'ok', 'login_sign': sign}
+            else:
+                return {'err': 1, 'msg': 'Failed to get login sign.', 'login_sign': None}
+        else:
+            return {'err': 1, 'msg': res.text, 'login_sign': None}
 
     def get_login_cookie(self, vcode=None):
         """
@@ -224,23 +235,25 @@ class QQ:
             urlVerify = 'http://captcha.qq.com/cap_union_verify_new'
             r = self.requests.get(urlVerify, params=par)
             js = r.json()
-            self.vcode = js['randstr']
+            self.code = js['randstr']
             self.session = js['ticket']
         self.login()
 
     def check(self):
         par = {
-            'pt_tea': 2,
+            'pt_tea': 1,
+            'pt_vcode': 1,
             'uin': self.qq,
             'appid': self.appid,
-            'js_ver': 10153,
             'js_type': 1,
-            'login_sig': self.loginSig,
-            'u1': self.url_success
+            'login_sig': self.login_sign,
+            'u1': 'http://qzs.qq.com/qzone/v5/loginsucc.html?para=izone'
         }
-        r = self.requests.get(self.urlCheck, params=par)
-        v = re.findall('\'(.*?)\'', r.text)
-        self.pt_vcode_v1, self.cap_cd, self.uin, self.session = v[:4]
+        res = self.requests.get(self.urlCheck, params=par)
+        if res.status_code == 200:
+            return {'err': 0, 'msg': 'ok', 'data': res.text}
+        else:
+            return {'err': 1, 'msg': res.text, 'data': None}
 
     """
     def _qzonetoken(self, res, start_str, end_str=';'):
@@ -281,7 +294,7 @@ class QQ:
         s2 = hashlib.md5(h1 + self.fromhex(salt)).hexdigest().upper()
         rsaH1 = binascii.b2a_hex(rsa.encrypt(h1, puk)).decode()
         rsaH1Len = hex(len(rsaH1) // 2)[2:]
-        hexVcode = binascii.b2a_hex(self.vcode.upper().encode()).decode()
+        hexVcode = binascii.b2a_hex(self.code.upper().encode()).decode()
         vcodeLen = hex(len(hexVcode) // 2)[2:]
         l = len(vcodeLen)
         if l < 4:
@@ -296,32 +309,31 @@ class QQ:
         return saltPwd
 
     def login(self):
-        d = self.requests.cookies.get_dict()
-        if 'ptvfsession' in d:
-            self.session = d['ptvfsession']
         par = {
-            'action': '2-0-1450538632070',
+            'action': '5-3-1495966725481',
             'aid': self.appid,
             'daid': 5,
             'from_ui': 1,
             'g': 1,
             'h': 1,
             'js_type': 1,
-            'js_ver': 10153,
-            'login_sig': self.loginSig,
+            'js_ver': 10220,
+            'login_sig': self.login_sign,
             'p': self.getEncryption(),
-            'pt_randsalt': 0,
-            'pt_uistyle': 32,
-            'pt_vcode_v1': self.pt_vcode_v1,
+            'pt_jstoken': 1419592444,
+            'pt_randsalt': 2,
+            'pt_uistyle': 40,
+            'pt_vcode_v1': self.vcodeShow,
             'pt_verifysession_v1': self.session,
             'ptlang': 2052,
             'ptredirect': 0,
             't': 1,
             'u': self.qq,
-            'u1': self.url_success,
-            'verifycode': self.vcode
+            'u1': 'http://qzs.qq.com/qzone/v5/loginsucc.html?para=izone',
+            'verifycode': self.code
         }
         r = self.requests.get(self.urlSubmit, params=par)
+        print(r.text)
         logging.info(r.text)
         if u'登录成功' not in r.text:
             self.login_tag = QQConstants.qq_stage_failure
@@ -456,42 +468,56 @@ class QQ:
         New version of get verify code, since 2016-11-04
         :return:
         """
-        if self.sess is None:
-            self.get_type()
-        get_sig_url = 'http://captcha.qq.com/cap_union_new_getsig'
-        params = {
+        cap_sess = 'https://ssl.captcha.qq.com/cap_union_new_gettype'
+        res = self.requests.get(cap_sess, params={
+            'uin': self.qq,
             'aid': self.appid,
-            'protocol': 'http',
-            'clienttype': 2,
-            'apptype': 2,
+            'cap_cd': self.cap_cd
+        })
+
+        if res.status_code != 200:
+            return {'err': 1, 'msg': res.text}
+
+        self.sess = json.loads(res.text[1:-1])['sess']
+
+        # Get sign
+        cap_sign = 'https://ssl.captcha.qq.com/cap_union_new_getsig'
+        res = self.requests.get(cap_sign, params={
+            'sess': self.sess,
+            'aid': self.appid,
+            'uid': self.qq,
+            'cap_cd': self.cap_cd
+        })
+
+        if res.status_code != 200:
+            return {'err': 1, 'msg': res.text}
+
+        self.sign = json.loads(res.text)['vsig']
+
+        # Get capture
+        cap_image = 'https://ssl.captcha.qq.com/cap_union_new_getcapbysig'
+        res = self.requests.get(cap_image, params={
+            'sess': self.sess,
+            'vsig': self.sign,
             'uid': self.qq,
             'cap_cd': self.cap_cd,
-            'sess': self.sess,
-            'curenv': 'inner'
-        }
-        r = self.requests.get(get_sig_url, params=params)
-        self.vsig = json.loads(r.text)['vsig']
-        par = {
             'aid': self.appid,
-            'protocol': 'http',
-            'clienttype': 2,
-            'apptype': 2,
-            'curenv': 'inner',
-            'sess': self.sess,
-            'uid': self.qq,
-            'cap_cd': self.cap_cd,
-            'vsig': self.vsig,
-            'showtype': 'embed',
-            'ischartype': 1,
-        }
-        r = self.requests.get(self.urlImg, params=par)
+            'ischartype': 1
+        })
+
+        if res.status_code != 200:
+            return {'err': 1, 'msg': res.text}
+
         tmp = tempfile.mkstemp(dir=self.captcha_dir, suffix='.jpg')
-        os.write(tmp[0], r.content)
+        os.write(tmp[0], res.content)
         os.close(tmp[0])
-        # Windows specific
         # os.startfile(tmp[1])
         self.verify_img_path = tmp[1]
         self.verify_img_name = os.path.basename(tmp[1])
+        return {'err': 0, 'msg': 'ok',
+                'sess': self.sess,
+                'sign': self.sign
+                }
 
     def verify(self, vcode=None):
         """
@@ -510,20 +536,16 @@ class QQ:
             os.remove(self.verify_img_path)
         par = {
             'aid': self.appid,
-            'protocol': 'http',
-            'clientype': 2,
-            'apptype': 2,
-            'curenv': 'inner',
             'sess': self.sess,
             'uid': self.qq,
             'cap_cd': self.cap_cd,
-            'vsig': self.vsig,
-            'ans': vcode,
+            'vsig': self.sign,
+            'ans': vcode
         }
-        urlVerify = 'http://captcha.qq.com/cap_union_new_verify'
-        r = self.requests.get(urlVerify, params=par)
+        url_verify = 'https://ssl.captcha.qq.com/cap_union_new_verify'
+        r = self.requests.post(url_verify, data=par)
         js = r.json()
-        self.vcode = js['randstr']
+        self.code = js['randstr']
         self.session = js['ticket']
 
     def gtk(self):
@@ -832,9 +854,9 @@ class QQ:
                 return []
             for msg in msgs:
                 if 'commentlist' in msg:
-                    commentList = msg['commentlist']
-                    if commentList is not None:
-                        for comment in commentList:
+                    comment_list = msg['commentlist']
+                    if comment_list is not None:
+                        for comment in comment_list:
                             uin = str(comment['uin'])
                             if re.match(filter_pattern, uin):
                                 friends.append(uin)
@@ -854,6 +876,6 @@ if __name__ == '__main__':
     else:
         print('QQ号:%s' % login_qq.qq)
         print("登录失败")
-    tag, profile = login_qq.friends('1341801774')
+    tag, profile = login_qq.profile('1341801774')
     print(tag)
     print(profile)
