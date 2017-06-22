@@ -82,7 +82,7 @@
                 <input name='crawl-qq' type="text" class="form-control" placeholder="QQ号/微博号">
             </div>
             <div class="col-lg-2">
-                <select class="form-control" id='crawl_type'>
+                <select class="form-control" id='crawl_type' onchange="javascript:changeCrawlType();">
                     <option value="1">QQ</option>
                     <option value="2">微博</option>                 
                 </select>
@@ -95,7 +95,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <div class="tim-note">
-                    <h5><strong>QQ号</strong>个人信息</h5>
+                    <h5><strong id="info_label">QQ号基本信息</strong></h5>
                     <span id="profile-tip" class="label label-danger"></span>
                 </div>
                 <table class='table table-bordered' id="profile-table">
@@ -105,28 +105,13 @@
                 <br/>
 
                 <div class="tim-note">
-                    <h5><strong>QQ号</strong>好友关系</h5>
+                    <h5><strong id="friends_label">QQ号好友关系</strong></h5>
                     <span id="friend-tip" class="label label-danger"></span>
                 </div>
 
                 <table class='table table-bordered' id="friend-table">
 
                 </table>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <div class="tim-note">
-                    <h5><strong>微博号</strong>基本信息</h5>
-                    <span id="weibo-profile-tip" class="label label-danger"></span>
-                </div>
-                <table class='table table-bordered' id="weibo-profile-table">
-
-                </table>
-
-                <br/>
-                
             </div>
         </div>
     </div>
@@ -169,6 +154,18 @@
 
 </body>
 <script type="text/javascript">
+    function changeCrawlType(){
+        type = eval($("#crawl_type").val());
+        if(type == 1){
+            $("#info_label").text("QQ号基本信息");
+            $("#friends_label").text("QQ号好友关系");
+        }
+        if(type == 2){
+            $("#info_label").text("微博号基本信息");
+            $("#friends_label").text("");
+        }
+    }
+
     function crawl() {
         type = eval($("#crawl_type").val());
         if(type == 1){
@@ -190,7 +187,7 @@
                         dataType:'json',
                         error:function()
                         {
-                            $("#weibo-profile-tip").text("个人信息获取失败，请稍后再试!");
+                            $("#profile-tip").text("微博个人信息获取失败，请稍后再试!");
                             //$("#weibo-job-tip").text("工作经历获取失败，请稍后再试!");
                         },
                         success:function(result)
@@ -209,7 +206,7 @@
                             key_dict["authentication"] = "认证";
                             key_dict["url"] = "互联网";
                             
-                            $("#weibo-profile-table").empty();
+                            $("#profile-table").empty();
                             
                             if(state == 0){
                                 // 个人信息表
@@ -220,7 +217,7 @@
                                 var thead = $("<thead></thead>");
                                 thead.append("<th>属性</th>")
                                 thead.append("<th>值</th>")
-                                thead.appendTo("#weibo-profile-table");
+                                thead.appendTo("#profile-table");
                                 var tbody = $("<tbody></tbody>");
                                 for(var item in key_dict){
                                     var trTemp = $("<tr></tr>");
@@ -241,7 +238,7 @@
                                     trTemp.append("<td>"+attr_value+"</td>");
                                     tbody.append(trTemp);
                                 }
-                                tbody.appendTo("#weibo-profile-table");
+                                tbody.appendTo("#profile-table");
 
                                 // 好友关系表
                                 // var f_thead = $("<thead></thead>");

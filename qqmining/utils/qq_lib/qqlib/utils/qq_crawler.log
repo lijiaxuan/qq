@@ -1,8 +1,8 @@
-Wed, 07 Jun 2017 13:24:33 connectionpool.py[line:214] INFO Starting new HTTP connection (1): xui.ptlogin2.qq.com
-Wed, 07 Jun 2017 13:24:33 connectionpool.py[line:805] INFO Starting new HTTPS connection (1): ssl.ptlogin2.qq.com
-Wed, 07 Jun 2017 13:24:34 qq.py[line:337] INFO ptuiCB('22009','0','','0','¶Ô²»Æğ£¬ÄúµÄºÅÂëµÇÂ¼Òì³££¬ÇëÊ¹ÓÃ<a href="http://im.qq.com/mobileqq/2013/" target="_blank">QQÊÖ»ú°æ</a>É¨Ãè¶şÎ¬Âë°²È«µÇÂ¼¡£<a href="http://ptlogin2.qq.com/qq_cheat_help" target="_blank">(°ïÖú·´À¡)</a>(22009)', '');
+Wed, 21 Jun 2017 12:53:29 connectionpool.py[line:214] INFO Starting new HTTP connection (1): xui.ptlogin2.qq.com
+Wed, 21 Jun 2017 12:53:30 connectionpool.py[line:805] INFO Starting new HTTPS connection (1): ssl.ptlogin2.qq.com
+Wed, 21 Jun 2017 12:53:30 qq.py[line:337] INFO ptuiCB('22009','0','','0','å¯¹ä¸èµ·ï¼Œæ‚¨çš„å·ç ç™»å½•å¼‚å¸¸ï¼Œè¯·ä½¿ç”¨<a href="http://im.qq.com/mobileqq/2013/" target="_blank">QQæ‰‹æœºç‰ˆ</a>æ‰«æäºŒç»´ç å®‰å…¨ç™»å½•ã€‚<a href="http://ptlogin2.qq.com/qq_cheat_help" target="_blank">(å¸®åŠ©åé¦ˆ)</a>(22009)', '');
 
-Wed, 07 Jun 2017 13:24:34 qq.py[line:343] WARNING [QQ]QQ 1531474354 Login in failed.
-Wed, 07 Jun 2017 13:24:35 connectionpool.py[line:805] INFO Starting new HTTPS connection (1): h5.qzone.qq.com
-Wed, 07 Jun 2017 13:24:36 qq.py[line:633] INFO ÇëÏÈµÇÂ¼
-Wed, 07 Jun 2017 13:24:36 qq.py[line:647] WARNING [QQ][Profile]1531474354 Wait to login again...
+Wed, 21 Jun 2017 12:53:30 qq.py[line:343] WARNING [QQ]QQ 1531474354 Login in failed.
+Wed, 21 Jun 2017 12:53:32 connectionpool.py[line:805] INFO Starting new HTTPS connection (1): h5.qzone.qq.com
+Wed, 21 Jun 2017 12:53:32 qq.py[line:633] INFO è¯·å…ˆç™»å½•
+Wed, 21 Jun 2017 12:53:32 qq.py[line:647] WARNING [QQ][Profile]1531474354 Wait to login again...
