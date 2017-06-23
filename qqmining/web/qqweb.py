@@ -16,10 +16,13 @@ from qqlib.utils.qq import QQ
 from elasticsearch_dsl import Search, Q
 
 from weibolib.utils.weibo import weiboInfo
+
 if __name__ == '__main__':
     from data_fetcher import DataFetcher
+    from pwd_guesser import NaivePCFGGuesser
 else:
     from .data_fetcher import DataFetcher
+    from .pwd_guesser import NaivePCFGGuesser
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'pcap', 'doc', 'docx'])
 es = Elasticsearch([{'host': '219.245.186.69', 'port': 9200}])
@@ -27,6 +30,18 @@ fetcher = DataFetcher()
 
 NODE_INDEX = 'neo4j-index-node'
 RELATIONSHIP_INDEX = 'neo4j-index-relationship'
+source_dict = {
+    'renren': u'人人网',
+    'csdn': 'CSDN',
+    'duduniu': u'嘟嘟牛',
+    '126': u'126邮箱',
+    'kaixin': u'开心网',
+    'ys168': u'永硕E盘',
+    'zhenai': u'真爱网',
+    'tianya': u'天涯社区',
+    '163': u'163邮箱',
+    'qq': 'QQ'
+}
 
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
@@ -37,6 +52,13 @@ logging.basicConfig(level=logging.INFO,
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+conf = ConfigParser()
+conf.read('qqweb.config')
+data_dir = str(conf.get('guess_config', 'data_dir')).strip()
+dict_file_path = str(conf.get('guess_config', 'dict_file_path')).strip()
+guesser = NaivePCFGGuesser(data_dir,
+                           dict_file_path)
 
 
 def allowed_file(filename):
@@ -140,32 +162,34 @@ def qq():
                   'tip': state_dict[qq_helper.login_tag]}
     return json.dumps(result)
 
-@app.route('/weibo',methods=['POST'])
+
+@app.route('/weibo', methods=['POST'])
 def weibo():
     weibo_num = request.values.get('weibo_num', '')
     conf = ConfigParser()
     conf.read('weiboweb.config')
     weibo_uin = str(conf.get('weibo_config', 'weibo_uin')).strip()
     weibo_pwd = str(conf.get('weibo_config', 'weibo_pwd')).strip()
-    weibo_helper = weiboInfo(weibo_uin,weibo_pwd)
+    weibo_helper = weiboInfo(weibo_uin, weibo_pwd)
     tag, info = weibo_helper.parseInfo(weibo_num)
-    
-    if(tag == 0):
+
+    if (tag == 0):
         weibo_helper.parseFans(weibo_num)
         weibo_helper.parseFollows(weibo_num)
 
         result = {
-                'state': 0,
-                'info': info,
-                'fans': ','.join(weibo_helper.fan_ids),
-                'follows' : ','.join(weibo_helper.follow_ids)
+            'state': 0,
+            'info': info,
+            'fans': ','.join(weibo_helper.fan_ids),
+            'follows': ','.join(weibo_helper.follow_ids)
         }
     else:
         result = {'state': 1,
                   'tip': "不存在该微博号对应的内容"}
     weibo_helper.browser.close()
     return json.dumps(result)
-	
+
+
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     if request.method == 'GET':
@@ -293,18 +317,6 @@ def user_details():
 
     qq_email = uin + '@qq.com'
     # get password information
-    source_dict = {
-        'renren': u'人人网',
-        'csdn': 'CSDN',
-        'duduniu': u'嘟嘟牛',
-        '126': u'126邮箱',
-        'kaixin': u'开心网',
-        'ys168': u'永硕E盘',
-        'zhenai': u'真爱网',
-        'tianya': u'天涯社区',
-        '163': u'163邮箱',
-        'qq': 'QQ'
-    }
     qq_email = 'weeny_84@hotmail.com'
     pwd_result = es.search(index=NODE_INDEX, doc_type='Pwd', body={'query': {'match': {'email': qq_email}}})
     pwd_hits = pwd_result['hits']['total']
@@ -380,19 +392,6 @@ def password():
         if len(source) != 0:
             s = s.query("match", source=source)
 
-        source_dict = {
-            'renren': u'人人网',
-            'csdn': 'CSDN',
-            'duduniu': u'嘟嘟牛',
-            '126': u'126邮箱',
-            'kaixin': u'开心网',
-            'ys168': u'永硕E盘',
-            'zhenai': u'真爱网',
-            'tianya': u'天涯社区',
-            '163': u'163邮箱',
-            'qq': 'QQ'
-        }
-
         response = s.execute()
 
         final_pwd_result = list()
@@ -405,6 +404,26 @@ def password():
                 print(hit.source)
             final_pwd_result.append((hit.username, hit.email, hit.password, hit.password_md5, pwd_source))
         return render_template('password.html', pwd_result=final_pwd_result, search=True)
+
+
+@app.route('/pwd_guess', methods=['GET', 'POST'])
+def pwd_guess():
+    if request.method == 'GET':
+        return render_template('pwd_guess.html', guess_result=None, guess=False)
+    else:
+        name = request.form['name'].strip()
+        username = request.form['username'].strip()
+        email = request.form['email'].strip()
+        birth = request.form['birth'].strip()
+        cell = request.form['cell'].strip()
+        id = request.form['id'].strip()
+        final_guess_result = guesser.gen_guesses(account=username,
+                                                 name=name,
+                                                 email=email,
+                                                 birth=birth,
+                                                 cellphone=cell,
+                                                 id=id)
+        return render_template('pwd_guess.html', guess_result=final_guess_result, guess=True)
 
 
 if __name__ == '__main__':
